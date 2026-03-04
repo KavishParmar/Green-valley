@@ -11,6 +11,7 @@ const navLinks = [
     { label: "About", href: "/about" },
     { label: "Admission", href: "/admission" },
     { label: "Gallery", href: "/gallery" },
+    { label: "Life at GVCI", href: "/life-at-gvci" },
     { label: "Contact", href: "/contact" },
 ];
 
@@ -26,163 +27,170 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav
-            style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 1000,
-                transition: "all 0.4s ease",
-                background: scrolled
-                    ? "rgba(5, 15, 9, 0.92)"
-                    : "transparent",
-                backdropFilter: scrolled ? "blur(20px)" : "none",
-                borderBottom: scrolled ? "1px solid rgba(212, 160, 23, 0.15)" : "none",
-                padding: "0 1.5rem",
-            }}
-        >
-            <div
+        <>
+            <nav
                 style={{
-                    maxWidth: "1280px",
-                    margin: "0 auto",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    height: "72px",
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    zIndex: 1000,
+                    transition: "all 0.4s ease",
+                    background: scrolled
+                        ? "rgba(5, 15, 9, 0.92)"
+                        : "transparent",
+                    backdropFilter: scrolled ? "blur(20px)" : "none",
+                    borderBottom: scrolled ? "1px solid rgba(212, 160, 23, 0.15)" : "none",
+                    padding: "0 1.5rem",
                 }}
             >
-                {/* Logo */}
-                <Link
-                    href="/"
-                    style={{ display: "flex", alignItems: "center", gap: "0.75rem", cursor: "pointer", textDecoration: "none" }}
+                <div
+                    style={{
+                        maxWidth: "1280px",
+                        margin: "0 auto",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        height: "72px",
+                    }}
                 >
+                    {/* Logo */}
+                    <Link
+                        href="/"
+                        style={{ display: "flex", alignItems: "center", gap: "0.75rem", cursor: "pointer", textDecoration: "none" }}
+                    >
+                        <div
+                            style={{
+                                width: "44px",
+                                height: "44px",
+                                borderRadius: "12px",
+                                overflow: "hidden",
+                                border: "2px solid rgba(212, 160, 23, 0.5)",
+                                boxShadow: "0 0 15px rgba(212, 160, 23, 0.3)",
+                            }}
+                        >
+                            <Image
+                                src="/gallery/others/logo.jpeg"
+                                alt="GVCI Logo"
+                                width={44}
+                                height={44}
+                                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                            />
+                        </div>
+                        <div className="logo-text">
+                            <div style={{ fontWeight: 800, fontSize: "1rem", letterSpacing: "-0.01em", color: "#fff" }}>
+                                Green Valley
+                            </div>
+                            <div style={{ fontSize: "0.65rem", color: "var(--gold)", letterSpacing: "0.12em", fontWeight: 600, textTransform: "uppercase" }}>
+                                Coaching Institute
+                            </div>
+                        </div>
+                    </Link>
+
+                    {/* Desktop Nav */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.15rem" }} className="desktop-nav">
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href;
+                            return (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    style={{
+                                        background: isActive ? "rgba(212,160,23,0.12)" : "transparent",
+                                        border: "none",
+                                        color: isActive ? "var(--gold)" : "rgba(255,255,255,0.8)",
+                                        fontSize: "0.85rem",
+                                        fontWeight: 700,
+                                        padding: "0.5rem 0.75rem",
+                                        borderRadius: "8px",
+                                        transition: "all 0.2s ease",
+                                        cursor: "pointer",
+                                        position: "relative",
+                                        textDecoration: "none"
+                                    }}
+                                >
+                                    {link.label}
+                                    {isActive && (
+                                        <span style={{
+                                            position: "absolute",
+                                            bottom: "4px",
+                                            left: "50%",
+                                            transform: "translateX(-50%)",
+                                            width: "12px",
+                                            height: "2px",
+                                            background: "var(--gold)",
+                                            borderRadius: "2px"
+                                        }} />
+                                    )}
+                                </Link>
+                            );
+                        })}
+                        <a href="tel:9926205683" className="btn-gold" style={{ padding: "0.5rem 1.25rem", fontSize: "0.85rem", marginLeft: "1rem", textDecoration: "none", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                            📞 Call Now
+                        </a>
+                    </div>
+
+                    {/* MobileToggle */}
+                    <button
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        style={{
+                            background: "none",
+                            border: "1px solid rgba(255,255,255,0.2)",
+                            color: "#fff",
+                            cursor: "pointer",
+                            padding: "0.5rem",
+                            borderRadius: "8px",
+                            display: "none",
+                        }}
+                        className="mobile-menu-btn"
+                    >
+                        {menuOpen ? "✕" : "☰"}
+                    </button>
+                </div>
+
+                {/* Mobile Menu */}
+                {menuOpen && (
                     <div
                         style={{
-                            width: "44px",
-                            height: "44px",
-                            borderRadius: "12px",
-                            overflow: "hidden",
-                            border: "2px solid rgba(212, 160, 23, 0.5)",
-                            boxShadow: "0 0 15px rgba(212, 160, 23, 0.3)",
+                            background: "rgba(5, 15, 9, 0.98)",
+                            backdropFilter: "blur(20px)",
+                            borderTop: "1px solid rgba(212, 160, 23, 0.15)",
+                            padding: "1.5rem",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "0.5rem",
+                            maxHeight: "80vh",
+                            overflowY: "auto"
                         }}
                     >
-                        <Image
-                            src="/gallery/others/logo.jpeg"
-                            alt="GVCI Logo"
-                            width={44}
-                            height={44}
-                            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-                        />
-                    </div>
-                    <div className="logo-text">
-                        <div style={{ fontWeight: 800, fontSize: "1rem", letterSpacing: "-0.01em", color: "#fff" }}>
-                            Green Valley
-                        </div>
-                        <div style={{ fontSize: "0.65rem", color: "var(--gold)", letterSpacing: "0.12em", fontWeight: 600, textTransform: "uppercase" }}>
-                            Coaching Institute
-                        </div>
-                    </div>
-                </Link>
-
-                {/* Desktop Nav */}
-                <div style={{ display: "flex", alignItems: "center", gap: "0.15rem" }} className="desktop-nav">
-                    {navLinks.map((link) => {
-                        const isActive = pathname === link.href;
-                        return (
+                        {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
+                                onClick={() => setMenuOpen(false)}
                                 style={{
-                                    background: isActive ? "rgba(212,160,23,0.12)" : "transparent",
-                                    border: "none",
-                                    color: isActive ? "var(--gold)" : "rgba(255,255,255,0.8)",
-                                    fontSize: "0.85rem",
-                                    fontWeight: 700,
-                                    padding: "0.5rem 0.75rem",
-                                    borderRadius: "8px",
-                                    transition: "all 0.2s ease",
+                                    background: "none",
+                                    border: "1px solid rgba(255,255,255,0.06)",
+                                    color: pathname === link.href ? "var(--gold)" : "rgba(255,255,255,0.85)",
+                                    textAlign: "left",
+                                    fontSize: "1rem",
+                                    fontWeight: 500,
+                                    padding: "0.75rem 1rem",
+                                    borderRadius: "10px",
                                     cursor: "pointer",
-                                    position: "relative",
                                     textDecoration: "none"
                                 }}
                             >
                                 {link.label}
-                                {isActive && (
-                                    <span style={{
-                                        position: "absolute",
-                                        bottom: "4px",
-                                        left: "50%",
-                                        transform: "translateX(-50%)",
-                                        width: "12px",
-                                        height: "2px",
-                                        background: "var(--gold)",
-                                        borderRadius: "2px"
-                                    }} />
-                                )}
                             </Link>
-                        );
-                    })}
-                </div>
+                        ))}
+                        <a href="tel:9926205683" className="btn-gold" onClick={() => setMenuOpen(false)} style={{ padding: "0.85rem 1rem", fontSize: "1rem", textAlign: "center", textDecoration: "none", marginTop: "0.5rem", display: "flex", justifyContent: "center", alignItems: "center", gap: "0.5rem" }}>
+                            📞 Call Now
+                        </a>
+                    </div>
+                )}
 
-                {/* MobileToggle */}
-                <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    style={{
-                        background: "none",
-                        border: "1px solid rgba(255,255,255,0.2)",
-                        color: "#fff",
-                        cursor: "pointer",
-                        padding: "0.5rem",
-                        borderRadius: "8px",
-                        display: "none",
-                    }}
-                    className="mobile-menu-btn"
-                >
-                    {menuOpen ? "✕" : "☰"}
-                </button>
-            </div>
-
-            {/* Mobile Menu */}
-            {menuOpen && (
-                <div
-                    style={{
-                        background: "rgba(5, 15, 9, 0.98)",
-                        backdropFilter: "blur(20px)",
-                        borderTop: "1px solid rgba(212, 160, 23, 0.15)",
-                        padding: "1.5rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "0.5rem",
-                        maxHeight: "80vh",
-                        overflowY: "auto"
-                    }}
-                >
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={() => setMenuOpen(false)}
-                            style={{
-                                background: "none",
-                                border: "1px solid rgba(255,255,255,0.06)",
-                                color: pathname === link.href ? "var(--gold)" : "rgba(255,255,255,0.85)",
-                                textAlign: "left",
-                                fontSize: "1rem",
-                                fontWeight: 500,
-                                padding: "0.75rem 1rem",
-                                borderRadius: "10px",
-                                cursor: "pointer",
-                                textDecoration: "none"
-                            }}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                </div>
-            )}
-
-            <style>{`
+                <style>{`
                 @media (max-width: 1024px) {
                     .desktop-nav { display: none !important; }
                     .mobile-menu-btn { display: flex !important; }
@@ -191,6 +199,75 @@ export default function Navbar() {
                     .logo-text { display: none; }
                 }
             `}</style>
-        </nav>
+            </nav >
+
+            {/* Global Floating Actions */}
+            <div style={{
+                position: "fixed",
+                bottom: "2rem",
+                right: "2rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+                zIndex: 9999,
+            }}>
+                {/* Scroll to top button */}
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    style={{
+                        background: "var(--dark)",
+                        color: "var(--gold)",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "1.5rem",
+                        boxShadow: "0 5px 15px rgba(0,0,0,0.5)",
+                        border: "1px solid rgba(212,160,23,0.3)",
+                        cursor: "pointer",
+                        opacity: scrolled ? 1 : 0,
+                        visibility: scrolled ? "visible" : "hidden",
+                        transform: scrolled ? "translateY(0)" : "translateY(20px)",
+                        transition: "all 0.3s ease",
+                        margin: "0 auto",
+                    }}
+                    onMouseEnter={e => {
+                        e.currentTarget.style.transform = "scale(1.1) translateY(-2px)";
+                        e.currentTarget.style.background = "rgba(212,160,23,0.1)";
+                    }}
+                    onMouseLeave={e => {
+                        e.currentTarget.style.transform = "scale(1) translateY(0)";
+                        e.currentTarget.style.background = "var(--dark)";
+                    }}
+                    title="Scroll to Top"
+                >
+                    ↑
+                </button>
+
+                {/* Floating Call Button */}
+                <a href="tel:9926205683" style={{
+                    background: "var(--gold)",
+                    color: "var(--dark)",
+                    width: "65px",
+                    height: "65px",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.8rem",
+                    boxShadow: "0 10px 25px rgba(212,160,23,0.4)",
+                    textDecoration: "none",
+                    transition: "transform 0.3s ease"
+                }}
+                    onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1) translateY(-5px)"}
+                    onMouseLeave={e => e.currentTarget.style.transform = "scale(1) translateY(0)"}
+                    title="Call Green Valley"
+                >
+                    📞
+                </a>
+            </div>
+        </>
     );
 }

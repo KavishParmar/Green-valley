@@ -122,7 +122,7 @@ export default function CoursesPage() {
                 <p style={{ color: "rgba(255,255,255,0.6)", maxWidth: "580px", margin: "0 auto 2rem", fontSize: "1.05rem", lineHeight: 1.7 }}>
                     Comprehensive, structured coaching programs designed by experts. Each course is tailored to give you the best chance at your target exam.
                 </p>
-                <Link href="/admission" className="btn-gold">Apply for a Course →</Link>
+                <Link href="/enquiry-form" className="btn-gold">Apply for a Course →</Link>
             </section>
 
             {/* Courses */}
@@ -217,7 +217,7 @@ export default function CoursesPage() {
                                 {/* Footer */}
                                 <div style={{ borderTop: `1px solid ${course.color}20`, padding: "1.5rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
                                     <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem" }}>New batch starts: April 1, 2025 — Limited seats, early enrollment advised</p>
-                                    <Link href="/admission" style={{ background: course.color, color: "#fff", padding: "0.75rem 2rem", borderRadius: "50px", fontWeight: 700, textDecoration: "none", fontSize: "0.9rem" }}>
+                                    <Link href="/enquiry-form" style={{ background: course.color, color: "#fff", padding: "0.75rem 2rem", borderRadius: "50px", fontWeight: 700, textDecoration: "none", fontSize: "0.9rem" }}>
                                         Enroll in {course.name} →
                                     </Link>
                                 </div>
@@ -247,6 +247,35 @@ export default function CoursesPage() {
                         }
                     }
                 `}</style>
+            </section>
+
+            {/* Batches Sub-section */}
+            <section style={{ padding: "0 1.5rem 6rem", maxWidth: "1280px", margin: "0 auto" }}>
+                <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+                    <span className="section-label">Enrollment Options</span>
+                    <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800 }}>Available <span className="gold-text">Batches</span></h2>
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+                    {[
+                        { title: "Foundation Course", eligibility: "Class 10th Pass", duration: "2 Years", batch: "15th of March 2026", color: "#22a15a" },
+                        { title: "Regular Course", eligibility: "Class 12th Pass", duration: "1 Year", batch: "15th of March 2026", color: "#3b82f6" },
+                        { title: "Droppers Course", eligibility: "Class 12th Pass", duration: "1 Year", batch: "15th of March 2026", color: "#d4a017" },
+                        { title: "Capsule Course", eligibility: "Targeted Students", duration: "6 Months", batch: "15th of March 2026", color: "#8b5cf6" },
+                        { title: "PCMB Special", eligibility: "Class 11/12", duration: "4 Months", batch: "15th of March 2026", color: "#e34a6f" },
+                        { title: "Crash Course", eligibility: "After 12th Board", duration: "2 Months", batch: "15th of March 2026", color: "#0ea5e9" }
+                    ].map(b => (
+                        <div key={b.title} style={{ background: "var(--dark)", border: `1px solid ${b.color}40`, borderRadius: "16px", padding: "2rem", transition: "all 0.3s ease", cursor: "pointer", boxShadow: `0 4px 20px ${b.color}10` }} onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = `0 10px 30px ${b.color}20`; }} onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = `0 4px 20px ${b.color}10`; }}>
+                            <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: b.color, marginBottom: "1.25rem" }}>{b.title}</h3>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>
+                                <div style={{ display: "flex", justifyContent: "space-between" }}><strong style={{ color: "#fff" }}>Eligibility:</strong> <span>{b.eligibility}</span></div>
+                                <div style={{ display: "flex", justifyContent: "space-between" }}><strong style={{ color: "#fff" }}>Duration:</strong> <span>{b.duration}</span></div>
+                                <div style={{ marginTop: "1rem", padding: "0.75rem", background: "rgba(212,160,23,0.1)", borderRadius: "8px", color: "var(--gold)", fontWeight: 700, textAlign: "center", border: "1px dashed rgba(212,160,23,0.3)" }}>
+                                    Batch Starts: {b.batch}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             {/* Comparison Table */}

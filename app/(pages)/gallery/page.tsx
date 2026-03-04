@@ -1,46 +1,179 @@
 "use client";
+import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import Link from "next/link";
 import Image from "next/image";
 
-const galleryImages = [
-    { src: "/gallery/475057395_1033857868759469_5485895748089860725_n.jpg", caption: "GVCI Result Celebration 2024" },
-    { src: "/gallery/475147427_9164457446948055_1901613602895446739_n.jpg", caption: "Classroom Session – PAT Batch" },
-    { src: "/gallery/492350792_1103358641809391_594765889162382026_n.jpg", caption: "CPAT Preparation Workshop" },
-    { src: "/gallery/492542904_1106057028206219_1656244274025712674_n.jpg", caption: "Annual Prize Distribution" },
-    { src: "/gallery/554763882_24714336294866919_4646227966759097779_n.jpg", caption: "Student Orientation Day" },
-    { src: "/gallery/555580981_24722584784042070_3562386962401332557_n.jpg", caption: "BHU Toppers Felicitation" },
-    { src: "/gallery/568336113_24961608810139665_3179627786325425270_n.jpg", caption: "Group Study Session" },
-    { src: "/gallery/571200999_24963140809986465_1199795824963335497_n.jpg", caption: "Scholarship Award Ceremony" },
-    { src: "/gallery/597816439_25412589441708264_5019190268825203934_n.jpg", caption: "GVCI Campus – Study Hall" },
+const allImages = [
+    // --- TRIPS (Priority) ---
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.18 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.19 PM (1).jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.19 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.21 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.24 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.26 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.27 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.28 PM (1).jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.28 PM (2).jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.28 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t22/WhatsApp Image 2026-03-03 at 4.09.43 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t22/WhatsApp Image 2026-03-03 at 4.09.44 PM (1).jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t22/WhatsApp Image 2026-03-03 at 4.09.44 PM (2).jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t22/WhatsApp Image 2026-03-03 at 4.09.44 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t22/WhatsApp Image 2026-03-03 at 4.09.45 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t23/WhatsApp Image 2026-03-03 at 4.17.12 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t23/WhatsApp Image 2026-03-03 at 4.17.27 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t23/WhatsApp Image 2026-03-03 at 4.18.15 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.14 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.19 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.20 PM (1).jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.20 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.22 PM (2).jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.25 PM.jpeg", "folder": "Trips" },
+    { "src": "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.30 PM.jpeg", "folder": "Trips" },
+
+    // --- FESTIVALS & EVENTS ---
+    { "src": "/gallery/ganesh utsav/g22/WhatsApp Image 2026-03-03 at 4.07.43 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g22/WhatsApp Image 2026-03-03 at 4.08.21 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g23/WhatsApp Image 2026-03-03 at 4.14.12 PM (1).jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g23/WhatsApp Image 2026-03-03 at 4.14.12 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g23/WhatsApp Image 2026-03-03 at 4.14.13 PM (1).jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g23/WhatsApp Image 2026-03-03 at 4.14.13 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g23/WhatsApp Image 2026-03-03 at 4.15.07 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g24/WhatsApp Image 2026-03-03 at 4.26.25 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/ganesh utsav/g24/WhatsApp Image 2026-03-03 at 4.26.26 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/national festivals/WhatsApp Image 2026-03-03 at 4.02.22 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/national festivals/WhatsApp Image 2026-03-03 at 4.02.23 PM (1).jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/national festivals/WhatsApp Image 2026-03-03 at 4.02.23 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/seminar/WhatsApp Image 2026-03-03 at 4.22.48 PM (1).jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/seminar/WhatsApp Image 2026-03-03 at 4.22.48 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/seminar/WhatsApp Image 2026-03-03 at 4.22.49 PM (1).jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/batch/b23/WhatsApp Image 2026-03-03 at 4.11.46 PM.jpeg", "folder": "Festivals & Events" },
+    { "src": "/gallery/classes/WhatsApp Image 2026-03-03 at 4.20.53 PM (1).jpeg", "folder": "Festivals & Events" },
+
+    // --- TEST WINNERS & AWARDS ---
+    { "src": "/gallery/achievements/Screenshot 2026-03-03 202922.png", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/achievements/Screenshot 2026-03-03 202945.png", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/achievements/Screenshot 2026-03-03 203049.png", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/achievements/Screenshot 2026-03-03 203054.png", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/achievements/Screenshot 2026-03-03 203229.png", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/top 3 dinner/WhatsApp Image 2026-03-03 at 4.19.30 PM.jpeg", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/top 3 dinner/WhatsApp Image 2026-03-03 at 4.19.45 PM.jpeg", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/top 3 dinner/WhatsApp Image 2026-03-03 at 4.20.03 PM.jpeg", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/posters/475147427_9164457446948055_1901613602895446739_n.jpg", "folder": "Test Winners & Awards" },
+    { "src": "/gallery/posters/492542904_1106057028206219_1656244274025712674_n.jpg", "folder": "Test Winners & Awards" },
+];
+const experienceCategories = [
+    "Trips",
+    "Festivals & Events",
+    "Test Winners & Awards"
 ];
 
 export default function GalleryPage() {
+    const [activePrimaryTab, setActivePrimaryTab] = useState("All Photos");
+    const [activeSubCategory, setActiveSubCategory] = useState("Traveling");
+
+    const displayedImages = activePrimaryTab === "All Photos"
+        ? allImages
+        : allImages.filter(img => img.folder === activeSubCategory);
+
     return (
-        <main>
+        <main style={{ background: "var(--dark)", minHeight: "100vh" }}>
             <Navbar />
-            {/* Hero */}
-            <section style={{ paddingTop: "130px", paddingBottom: "4rem", paddingLeft: "1.5rem", paddingRight: "1.5rem", background: "radial-gradient(ellipse at top, rgba(15,61,36,0.5) 0%, var(--dark) 60%)", textAlign: "center" }}>
+
+            <section style={{ paddingTop: "130px", paddingBottom: "2rem", paddingLeft: "1.5rem", paddingRight: "1.5rem", textAlign: "center" }}>
                 <span className="section-label">Campus Life</span>
-                <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 900, letterSpacing: "-0.03em", marginBottom: "1.25rem" }}>
-                    Life at <span className="gold-text">Green Valley</span>
+                <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 900, marginBottom: "1.25rem" }}>
+                    Life at <span className="gold-text">GVCI</span>
                 </h1>
                 <p style={{ color: "rgba(255,255,255,0.6)", maxWidth: "500px", margin: "0 auto", fontSize: "1.05rem" }}>
-                    From celebrations to serious study sessions – a glimpse into life at GVCI.
+                    From celebrations to serious study sessions – a glimpse into life at Green Valley Coaching Institute.
                 </p>
             </section>
 
-            {/* Gallery Grid */}
-            <section style={{ padding: "4rem 1.5rem 6rem", maxWidth: "1280px", margin: "0 auto" }}>
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                        gap: "1rem",
-                    }}
-                >
-                    {galleryImages.map((img, i) => (
+            <section style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem 2rem" }}>
+                {/* Primary Tabs */}
+                <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginBottom: "2rem" }}>
+                    <button
+                        onClick={() => setActivePrimaryTab("All Photos")}
+                        style={{
+                            padding: "0.75rem 2rem",
+                            borderRadius: "60px",
+                            fontWeight: 800,
+                            background: activePrimaryTab === "All Photos" ? "var(--gold)" : "transparent",
+                            color: activePrimaryTab === "All Photos" ? "var(--dark)" : "rgba(255,255,255,0.7)",
+                            border: `1px solid ${activePrimaryTab === "All Photos" ? "var(--gold)" : "rgba(255,255,255,0.2)"}`,
+                            cursor: "pointer",
+                            transition: "all 0.3s ease"
+                        }}
+                    >
+                        All Photos
+                    </button>
+                    <button
+                        onClick={() => setActivePrimaryTab("View By Experience")}
+                        style={{
+                            padding: "0.75rem 2rem",
+                            borderRadius: "60px",
+                            fontWeight: 800,
+                            background: activePrimaryTab === "View By Experience" ? "var(--gold)" : "transparent",
+                            color: activePrimaryTab === "View By Experience" ? "var(--dark)" : "rgba(255,255,255,0.7)",
+                            border: `1px solid ${activePrimaryTab === "View By Experience" ? "var(--gold)" : "rgba(255,255,255,0.2)"}`,
+                            cursor: "pointer",
+                            transition: "all 0.3s ease"
+                        }}
+                    >
+                        View By Experience
+                    </button>
+                </div>
+
+                {/* Secondary Filters (Experience Categories) */}
+                {activePrimaryTab === "View By Experience" && (
+                    <div
+                        className="hide-scrollbar"
+                        style={{
+                            display: "flex",
+                            justifyContent: "flex-start",
+                            flexWrap: "nowrap",
+                            gap: "0.75rem",
+                            marginBottom: "3rem",
+                            overflowX: "auto",
+                            paddingBottom: "1rem",
+                            WebkitOverflowScrolling: "touch"
+                        }}
+                    >
+                        {experienceCategories.map(cat => (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveSubCategory(cat)}
+                                style={{
+                                    padding: "0.6rem 1.5rem",
+                                    borderRadius: "40px",
+                                    fontSize: "0.85rem",
+                                    fontWeight: 700,
+                                    background: activeSubCategory === cat ? "rgba(212,160,23,0.15)" : "rgba(255,255,255,0.03)",
+                                    color: activeSubCategory === cat ? "var(--gold)" : "rgba(255,255,255,0.6)",
+                                    border: `1px solid ${activeSubCategory === cat ? "var(--gold)" : "rgba(255,255,255,0.1)"}`,
+                                    cursor: "pointer",
+                                    transition: "all 0.3s ease",
+                                    whiteSpace: "nowrap",
+                                    flexShrink: 0
+                                }}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                )}
+
+                {/* Gallery Grid */}
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
+                    gap: "1.25rem",
+                    paddingBottom: "6rem",
+                    marginTop: activePrimaryTab === "All Photos" ? "3rem" : "1rem"
+                }}>
+                    {displayedImages.map((img, i) => (
                         <div
                             key={i}
                             style={{
@@ -49,62 +182,65 @@ export default function GalleryPage() {
                                 position: "relative",
                                 aspectRatio: "4/3",
                                 cursor: "pointer",
-                                border: "1px solid rgba(255,255,255,0.07)",
+                                border: "1px solid rgba(255,255,255,0.05)",
                                 transition: "all 0.4s ease",
                             }}
                             onMouseEnter={(e) => {
-                                const el = e.currentTarget as HTMLElement;
+                                const el = e.currentTarget;
                                 el.style.transform = "translateY(-6px)";
-                                el.style.boxShadow = "0 20px 60px rgba(0,0,0,0.6)";
+                                el.style.boxShadow = "0 20px 40px rgba(0,0,0,0.5)";
                                 el.style.borderColor = "rgba(212,160,23,0.3)";
-                                const overlay = el.querySelector(".overlay") as HTMLElement;
-                                if (overlay) overlay.style.opacity = "1";
+                                (el.querySelector('.overlay') as HTMLElement).style.opacity = '1';
                             }}
                             onMouseLeave={(e) => {
-                                const el = e.currentTarget as HTMLElement;
+                                const el = e.currentTarget;
                                 el.style.transform = "translateY(0)";
                                 el.style.boxShadow = "none";
-                                el.style.borderColor = "rgba(255,255,255,0.07)";
-                                const overlay = el.querySelector(".overlay") as HTMLElement;
-                                if (overlay) overlay.style.opacity = "0";
+                                el.style.borderColor = "rgba(255,255,255,0.05)";
+                                (el.querySelector('.overlay') as HTMLElement).style.opacity = '0';
                             }}
                         >
+                            {/* Force Next.js Image to unoptimized temporarily so many local images load smoothly without freezing local dev */}
                             <Image
                                 src={img.src}
-                                alt={img.caption}
+                                alt={`${img.folder} photo`}
                                 fill
+                                unoptimized
                                 style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
-                            <div
-                                className="overlay"
-                                style={{
-                                    position: "absolute",
-                                    inset: 0,
-                                    background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%)",
-                                    opacity: 0,
-                                    transition: "opacity 0.3s ease",
-                                    display: "flex",
-                                    alignItems: "flex-end",
-                                    padding: "1.25rem",
-                                }}
-                            >
-                                <p style={{ color: "#fff", fontWeight: 600, fontSize: "0.9rem" }}>{img.caption}</p>
+                            <div className="overlay" style={{
+                                position: "absolute",
+                                bottom: 0, left: 0, right: 0,
+                                padding: "1.5rem 1rem 1rem",
+                                background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)",
+                                opacity: 0,
+                                transition: "opacity 0.3s ease",
+                            }}>
+                                <span style={{ color: "var(--gold)", fontSize: "0.85rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                                    {img.folder}
+                                </span>
                             </div>
                         </div>
                     ))}
-                </div>
-
-                {/* Social CTA */}
-                <div style={{ textAlign: "center", marginTop: "4rem" }}>
-                    <p style={{ color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem" }}>See more on our social media channels</p>
-                    <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-                        <a href="https://www.instagram.com/gvci_sehore" target="_blank" rel="noopener noreferrer" className="btn-gold">Follow on Instagram →</a>
-                        <a href="https://www.facebook.com/p/GREEN-Valley-Coaching-Institute-Sehore-MP-100064057958208/" target="_blank" rel="noopener noreferrer" className="btn-outline">Visit Facebook Page</a>
-                    </div>
+                    {displayedImages.length === 0 && (
+                        <div style={{ color: "rgba(255,255,255,0.5)", gridColumn: "1 / -1", textAlign: "center", padding: "4rem" }}>
+                            No images found in this category.
+                        </div>
+                    )}
                 </div>
             </section>
 
             <Footer />
+            <style jsx global>{`
+                .hide-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+                .hide-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            `}</style>
         </main>
     );
 }

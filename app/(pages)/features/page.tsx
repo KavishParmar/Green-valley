@@ -7,47 +7,61 @@ import Image from "next/image";
 export default function FeaturesPage() {
     const featureCards = [
         {
-            title: "Smart Innovative Classes",
-            icon: "💻",
-            desc: "Our Smart Classes use advanced visualization methods to simplify complex biology and agriculture concepts. Teaching with high-end tech makes learning interactive and easy to retain.",
+            title: "Small Batch Sizes",
+            icon: "👨‍🏫",
+            desc: "Individual attention ensured for every student with limited batch strength, preventing students from getting lost in the crowd.",
             img: "/gallery/classes/WhatsApp Image 2026-03-03 at 4.23.25 PM.jpeg",
-            stats: "Interactive Learning"
+            stats: "Focused Learning"
         },
         {
-            title: "Weekly Motivation Classes",
-            icon: "🔥",
-            desc: "Success isn't just about study; it's about mindset. Every week, we conduct sessions to keep students focused, consistent, and mentally prepared for national-level challenges.",
+            title: "Expert Faculty",
+            icon: "👩‍🔬",
+            desc: "Multiple experienced and qualified teachers available for every subject. Special doubt-solving sessions available beyond regular class hours.",
             img: "/gallery/seminar/WhatsApp Image 2026-03-03 at 4.23.08 PM.jpeg",
-            stats: "Mindset & Growth"
+            stats: "Expert Faculty"
         },
         {
-            title: "Result-Oriented Test Series",
-            icon: "📉",
-            desc: "Highly curated mock tests with detailed analytics. We track your progress across topics, predicting your rank and identifying exact weak points for improvement.",
-            img: "/gallery/testimonials results/Screenshot 2026-03-03 203229.png",
-            stats: "Real Exam Practice"
-        },
-        {
-            title: "Personal Mentorship",
+            title: "Green Valley Guardian",
             icon: "🤝",
-            desc: "Beyond classroom hours, every student is guided by a personal mentor. We discuss academic strategy, university selection, and even organize dinners for top performers.",
+            desc: "A unique 1:10 mentorship system. One dedicated GVCI member is assigned to every 10 students to resolve academic and personal queries promptly.",
             img: "/gallery/top 3 dinner/WhatsApp Image 2026-03-03 at 4.19.30 PM.jpeg",
             stats: "1-on-1 Guidance"
         },
         {
-            title: "Celebrations & Festivals",
-            icon: "🌟",
-            desc: "At GVCI, we celebrate every milestone. From Ganesh Utsav to National festivals, our campus is a vibrant community that believes in holistic cultural growth.",
-            img: "/gallery/ganesh utsav/g25/Screenshot 2026-03-03 203348.png",
-            stats: "Vibrant Campus Life"
+            title: "GVCI Library",
+            icon: "📚",
+            desc: "Available 24 hours. All exam-relevant books, previous year papers, and reference materials are available free of cost for our enrolled students.",
+            img: "/gallery/others/WhatsApp Image 2026-03-03 at 4.13.23 PM.jpeg",
+            stats: "24/7 Access"
         },
         {
-            title: "Curated Study Package",
+            title: "Printed Notes",
             icon: "📖",
-            desc: "Our in-house study material (4 volumes) is designed by experts to cover the entire entrance syllabus with shortcuts and solved examples for quick revision.",
-            img: "/gallery/others/WhatsApp Image 2026-03-03 at 4.13.23 PM.jpeg",
-            stats: "Expert Material"
+            desc: "Chapter-wise printed notes for every subject containing 24 years of solved questions and thousands of expected questions.",
+            img: "/gallery/others/WhatsApp Image 2026-03-03 at 4.28.30 PM.jpeg",
+            stats: "Comprehensive Coverage"
         },
+        {
+            title: "Comprehensive Test Series",
+            icon: "📉",
+            desc: "Weekly Sunday tests, chapter completion tests, surprise tests, DTS/CTS series during revisions, and full mock exams to simulate the real environment.",
+            img: "/gallery/testimonials results/Screenshot 2026-03-03 203229.png",
+            stats: "Real Exam Practice"
+        },
+        {
+            title: "Intensive Class Schedule",
+            icon: "📅",
+            desc: "6 hours of daily classes. Extra doubt-clearing every Saturday and test solution classes every Monday. Revisions continue until the exam day.",
+            img: "/gallery/seminar/WhatsApp Image 2026-03-03 at 4.30.29 PM.jpeg",
+            stats: "Structured Routine"
+        },
+        {
+            title: "Motivational Sessions",
+            icon: "🏆",
+            desc: "Regular motivation by toppers, subject experts, and achievers. Top 5 students are honored every Sunday during weekly tests to maintain competitive spirit.",
+            img: "/gallery/ganesh utsav/g25/Screenshot 2026-03-03 203348.png",
+            stats: "Constant Encouragement"
+        }
     ];
 
     return (
@@ -79,7 +93,7 @@ export default function FeaturesPage() {
 
             {/* Feature Cards Grid */}
             <section style={{ padding: "0 1.5rem 8rem", maxWidth: "1400px", margin: "0 auto", marginTop: "-4rem", position: "relative", zIndex: 10 }}>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))", gap: "2.5rem" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
                     {featureCards.map((card, idx) => (
                         <div
                             key={idx}
@@ -133,7 +147,7 @@ export default function FeaturesPage() {
                                     <span style={{ fontSize: "2rem" }}>{card.icon}</span>
                                     <h3 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>{card.title}</h3>
                                 </div>
-                                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "2rem" }}>
+                                <p className="feature-desc" style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: "2rem" }}>
                                     {card.desc}
                                 </p>
                                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -174,18 +188,18 @@ export default function FeaturesPage() {
                         </h2>
                     </div>
                     <div className="table-wrapper" style={{
-                        overflowX: "auto",
                         borderRadius: "32px",
                         border: "1px solid rgba(255,255,255,0.1)",
                         background: "rgba(255,255,255,0.02)",
-                        backdropFilter: "blur(20px)"
+                        backdropFilter: "blur(20px)",
+                        overflow: "hidden"
                     }}>
                         <table style={{ width: "100%", borderCollapse: "collapse" }}>
                             <thead>
                                 <tr>
-                                    <th style={{ padding: "1.75rem", textAlign: "left", color: "rgba(255,255,255,0.4)", fontSize: "0.9rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Feature</th>
-                                    <th style={{ padding: "1.75rem", textAlign: "center", color: "var(--gold)", fontSize: "1.1rem", fontWeight: 950, borderBottom: "1px solid rgba(255,255,255,0.1)", background: "rgba(212,160,23,0.08)" }}>GVCI Standards</th>
-                                    <th style={{ padding: "1.75rem", textAlign: "center", color: "rgba(255,255,255,0.3)", fontSize: "0.9rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Industry Average</th>
+                                    <th className="th-feature">Feature</th>
+                                    <th className="th-gvci">GVCI Standards</th>
+                                    <th className="th-industry">Industry Average</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -197,9 +211,9 @@ export default function FeaturesPage() {
                                     ["Mentorship", "✅ Dedicated Mentor", "❌ Not Available"],
                                 ].map(([f, gv, oth], i) => (
                                     <tr key={i} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                                        <td style={{ padding: "1.5rem", color: "rgba(255,255,255,0.7)", fontWeight: 600 }}>{f}</td>
-                                        <td style={{ padding: "1.5rem", textAlign: "center", color: "var(--green-400)", fontWeight: 750, background: "rgba(34,161,90,0.05)" }}>{gv}</td>
-                                        <td style={{ padding: "1.5rem", textAlign: "center", color: "rgba(255,255,255,0.3)" }}>{oth}</td>
+                                        <td className="td-feature">{f}</td>
+                                        <td className="td-gvci">{gv}</td>
+                                        <td className="td-industry">{oth}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -228,6 +242,44 @@ export default function FeaturesPage() {
                     color: var(--gold);
                     margin-bottom: 2rem;
                     display: block;
+                }
+                
+                .feature-desc {
+                    font-size: 1rem;
+                }
+                
+                /* Table Styles */
+                .table-wrapper th, .table-wrapper td {
+                    padding: 1.5rem 1rem;
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                }
+                .th-feature { text-align: left; color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+                .th-gvci { text-align: center; color: var(--gold); font-size: 1rem; font-weight: 950; background: rgba(212,160,23,0.08); }
+                .th-industry { text-align: center; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+                
+                .td-feature { color: rgba(255,255,255,0.7); font-weight: 600; font-size: 0.95rem; }
+                .td-gvci { text-align: center; color: var(--green-400); font-weight: 750; background: rgba(34,161,90,0.05); font-size: 0.95rem; }
+                .td-industry { text-align: center; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+
+                @media (max-width: 768px) {
+                    .feature-desc { font-size: 0.9rem; }
+                    .table-wrapper th, .table-wrapper td {
+                        padding: 0.8rem 0.4rem !important;
+                        font-size: 0.7rem !important;
+                    }
+                    .th-gvci { font-size: 0.8rem !important; }
+                    .td-gvci { font-weight: 800 !important; }
+                    .table-wrapper {
+                        border-radius: 20px !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .table-wrapper th, .table-wrapper td {
+                        padding: 0.6rem 0.25rem !important;
+                        font-size: 0.62rem !important;
+                    }
+                    .th-gvci { font-size: 0.65rem !important; }
+                    .td-feature { font-size: 0.65rem !important; }
                 }
             `}</style>
         </main>

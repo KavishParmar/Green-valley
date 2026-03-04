@@ -43,19 +43,6 @@ const scholarships = [
         ],
         process: "Submit income certificate + self-declaration form at admission.",
     },
-    {
-        name: "Sports & Arts Excellence",
-        color: "#f59e0b",
-        icon: "⭐",
-        waiver: "Excellence Award",
-        desc: "Recognizing students with exceptional achievement in state/national sports or arts.",
-        criteria: [
-            "State or national representation in any sport",
-            "Awardee at state/national level cultural event",
-            "Certificate of participation required",
-        ],
-        process: "Submit participation certificate. Case-by-case evaluation.",
-    },
 ];
 
 const faqs = [
@@ -89,7 +76,7 @@ export default function ScholarshipPage() {
                         { v: "500+", l: "Scholarships Awarded" },
                         { v: "300+", l: "Students Supported" },
                         { v: "Top Tier", l: "Scholarship Support" },
-                        { v: "4 Types", l: "of Scholarships" },
+                        { v: "3 Types", l: "of Scholarships" },
                     ].map((s) => (
                         <div key={s.l}>
                             <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "var(--gold)" }}>{s.v}</div>
@@ -167,7 +154,7 @@ export default function ScholarshipPage() {
                         </div>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <Link href="/admission" className="btn-gold" style={{ width: "100%", justifyContent: "center" }}>Book Your Scholarship Test Now →</Link>
+                        <Link href="/enquiry-form" className="btn-gold" style={{ width: "100%", justifyContent: "center" }}>Book Your Scholarship Test Now →</Link>
                     </div>
                 </div>
             </section>

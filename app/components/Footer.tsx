@@ -4,24 +4,25 @@ import Image from "next/image";
 export default function Footer() {
     const year = new Date().getFullYear();
 
-    const quickLinks = [
-        { label: "Home", href: "/" },
-        { label: "About", href: "/about" },
-        { label: "Features", href: "/features" },
-        { label: "Courses", href: "/courses" },
-        { label: "Admission", href: "/admission" },
+    const usefulLinks = [
+        { label: "Get Inquiry", href: "/enquiry-form" },
+        { label: "Join Now", href: "/enquiry-form" },
+        { label: "Why Green Valley", href: "/features" },
         { label: "Scholarship", href: "/scholarship" },
         { label: "Gallery", href: "/gallery" },
-        { label: "Contact", href: "/contact" },
     ];
 
     const courses = [
-        { label: "PAT Coaching", href: "/courses" },
-        { label: "CPAT Coaching", href: "/courses" },
-        { label: "BHU Entrance Prep", href: "/courses" },
-        { label: "CPET Coaching", href: "/courses" },
-        { label: "Test Series", href: "/courses" },
-        { label: "Scholarship Test", href: "/scholarship" },
+        { label: "PAT", href: "/courses" },
+        { label: "CPAT", href: "/courses" },
+        { label: "BHU", href: "/courses" },
+        { label: "CPET", href: "/courses" },
+        { label: "ICAR", href: "/courses" },
+    ];
+
+    const admissionLinks = [
+        { label: "How to Apply", href: "/admission" },
+        { label: "Admission FAQ", href: "/admission" },
     ];
 
     return (
@@ -69,7 +70,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.875rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                            10+ years of nurturing future agricultural leaders since 2015. GVCI offers expert coaching for PAT, CPAT, BHU, and CPET entrance examinations in Sehore, MP.
+                            10+ years of nurturing future agricultural leaders since 2015. Expert coaching for PAT, CPAT, BHU, and CPET in Sehore, MP.
                         </p>
                         {/* Social Links */}
                         <div style={{ display: "flex", gap: "0.75rem" }}>
@@ -141,15 +142,15 @@ export default function Footer() {
                     </div>
 
                     {/* Links Group (Parallel) */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
-                        {/* Quick Links */}
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "2rem" }}>
+                        {/* Useful Links */}
                         <div>
                             <h4 style={{ color: "var(--gold)", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
-                                Quick Links
+                                Useful Links
                             </h4>
                             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                                {quickLinks.map((link) => (
-                                    <li key={link.href}>
+                                {usefulLinks.map((link) => (
+                                    <li key={link.href + link.label}>
                                         <Link
                                             href={link.href}
                                             style={{
@@ -164,7 +165,6 @@ export default function Footer() {
                                             onMouseEnter={(e) => { (e.target as HTMLElement).style.color = "var(--gold)"; }}
                                             onMouseLeave={(e) => { (e.target as HTMLElement).style.color = "rgba(255,255,255,0.55)"; }}
                                         >
-                                            <span style={{ color: "var(--green-400)", fontSize: "0.7rem" }}>▶</span>
                                             {link.label}
                                         </Link>
                                     </li>
@@ -194,7 +194,35 @@ export default function Footer() {
                                             onMouseEnter={(e) => { (e.target as HTMLElement).style.color = "var(--gold)"; }}
                                             onMouseLeave={(e) => { (e.target as HTMLElement).style.color = "rgba(255,255,255,0.55)"; }}
                                         >
-                                            <span style={{ color: "var(--green-400)", fontSize: "0.7rem" }}>▶</span>
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Admission */}
+                        <div>
+                            <h4 style={{ color: "var(--gold)", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1.25rem" }}>
+                                Admission
+                            </h4>
+                            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                                {admissionLinks.map((link) => (
+                                    <li key={link.label}>
+                                        <Link
+                                            href={link.href}
+                                            style={{
+                                                color: "rgba(255,255,255,0.55)",
+                                                textDecoration: "none",
+                                                fontSize: "0.9rem",
+                                                transition: "color 0.2s ease",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "0.5rem",
+                                            }}
+                                            onMouseEnter={(e) => { (e.target as HTMLElement).style.color = "var(--gold)"; }}
+                                            onMouseLeave={(e) => { (e.target as HTMLElement).style.color = "rgba(255,255,255,0.55)"; }}
+                                        >
                                             {link.label}
                                         </Link>
                                     </li>
