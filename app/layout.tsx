@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import PageLoaderWrapper from "./components/PageLoaderWrapper";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Green Valley Coaching Institute | PAT, PVT, BHU, CUET(ICAR) Prep | Sehore, MP",
@@ -40,6 +41,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <PageLoaderWrapper>{children}</PageLoaderWrapper>
+        <Analytics />
       </body>
     </html>
   );
