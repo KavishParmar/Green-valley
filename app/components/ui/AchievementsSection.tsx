@@ -14,7 +14,7 @@ const achievements = [
         name: "Award by Hon. CM",
         rank: "Excellence in Agriculture Coaching",
         college: "Shivraj Singh Chouhan",
-        img: "/gallery/awarded by cm.jpg"
+        img: "/gallery/achievements/Award by CM Shivraj singh chouhan.png"
     },
     {
         name: "Rohit Purbiya",

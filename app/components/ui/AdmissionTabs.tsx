@@ -11,7 +11,7 @@ interface Step {
 }
 
 const defaultSteps = [
-    { step: "01", title: "Choose Your Course", desc: "Select from PAT, CPAT, BHU, or CPET based on your goal and eligibility. Counseling available.", icon: "📚", color: "#22a15a" },
+    { step: "01", title: "Choose Your Course", desc: "Select from PAT, PVT, BHU, or CUET based on your goal and eligibility. Counseling available.", icon: "📚", color: "#22a15a" },
     { step: "02", title: "Eligibility Check", desc: "Verify you have completed Class 12 (PCB/PCM). Submit your marksheet for review.", icon: "✅", color: "#3b82f6" },
     { step: "03", title: "Fill Application", desc: "Complete the online/offline admission form with personal and academic details.", icon: "📝", color: "#d4a017" },
     { step: "04", title: "Document Verification", desc: "Submit Class 10 & 12 marksheets, Aadhar card, passport photo, and migration certificate.", icon: "📁", color: "#8b5cf6" },
@@ -98,8 +98,8 @@ export default function AdmissionTabs({ steps = defaultSteps, onApplyClick }: Ad
                         <h3 style={titleStyle}>Frequently Asked Questions</h3>
                         <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
                             <FaqItem
-                                q="What is the minimum eligibility for PAT/CPAT batches?"
-                                a="Students must have completed Class 12 with Physics, Chemistry, and either Biology (PCB) or Mathematics (PCM) from a recognized board."
+                                q="What is the minimum eligibility for PAT/PVT batches?"
+                                a="Students must have completed Class 11/12 with Physics, Chemistry, and either Biology (PCB) or Mathematics (PCM) from a recognized board."
                             />
                             <FaqItem
                                 q="Can I join a batch after the course has already started?"

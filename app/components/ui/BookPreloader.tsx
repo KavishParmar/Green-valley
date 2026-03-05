@@ -7,18 +7,18 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Timer to fade out preloader (2.8 seconds)
+    // Timer to fade out preloader (1.0 seconds)
     const timeout = setTimeout(() => {
       gsap.to(".preloader-container", {
         opacity: 0,
-        duration: 0.8,
+        duration: 0.3,
         ease: "power2.inOut",
         onComplete: () => {
           setIsVisible(false);
           onComplete();
         },
       });
-    }, 2800);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, [onComplete]);
@@ -41,8 +41,8 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
           <div className="book-page">
             <div className="page-side page-front">
               <div className="page-content">
-                <span className="course-code">CPET</span>
-                <span className="course-label">Combined Pre-Science</span>
+                <span className="course-code">CUET</span>
+                <span className="course-label">Common University</span>
               </div>
             </div>
             <div className="page-side page-back"></div>
@@ -61,8 +61,8 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
           <div className="book-page">
             <div className="page-side page-front">
               <div className="page-content">
-                <span className="course-code">CPAT</span>
-                <span className="course-label">Science Entrance</span>
+                <span className="course-code">PVT</span>
+                <span className="course-label">Pre-Veterinary Test</span>
               </div>
             </div>
             <div className="page-side page-back"></div>
@@ -116,7 +116,7 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
           position: relative;
           transform-style: preserve-3d;
           transform: rotateX(20deg) rotateY(-20deg);
-          animation: bookFloat 3s ease-in-out infinite;
+          animation: bookFloat 1s ease-in-out infinite;
         }
 
         @keyframes bookFloat {
@@ -181,7 +181,7 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
           right: 0;
           transform-style: preserve-3d;
           transform-origin: left center;
-          animation: flipPage 2.5s infinite ease-in-out;
+          animation: flipPage 1.2s both ease-in-out;
           z-index: 5;
         }
 
@@ -248,10 +248,10 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
           letter-spacing: 0.1em;
         }
 
-        .book-page:nth-child(2) { animation-delay: 2.0s; z-index: 6; }
-        .book-page:nth-child(3) { animation-delay: 1.5s; z-index: 7; }
-        .book-page:nth-child(4) { animation-delay: 1.0s; z-index: 8; }
-        .book-page:nth-child(5) { animation-delay: 0.5s; z-index: 9; }
+        .book-page:nth-child(2) { animation-delay: 1.2s; z-index: 6; }
+        .book-page:nth-child(3) { animation-delay: 0.9s; z-index: 7; }
+        .book-page:nth-child(4) { animation-delay: 0.6s; z-index: 8; }
+        .book-page:nth-child(5) { animation-delay: 0.3s; z-index: 9; }
         .book-cover { 
           animation-delay: 0s; 
           z-index: 15;
@@ -262,8 +262,7 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
 
         @keyframes flipPage {
           0% { transform: rotateY(0deg); }
-          25% { transform: rotateY(0deg); }
-          85%, 100% { transform: rotateY(-180deg); }
+          100% { transform: rotateY(-180deg); }
         }
 
         .loading-text {

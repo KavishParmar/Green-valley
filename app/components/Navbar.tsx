@@ -8,11 +8,11 @@ const navLinks = [
     { label: "Home", href: "/" },
     { label: "Features", href: "/features" },
     { label: "Courses", href: "/courses" },
-    { label: "About", href: "/about" },
+    { label: "About Us", href: "/about" },
     { label: "Admission", href: "/admission" },
     { label: "Gallery", href: "/gallery" },
     { label: "Life at GVCI", href: "/life-at-gvci" },
-    { label: "Contact", href: "/contact" },
+    { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar() {

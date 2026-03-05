@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PageLoaderWrapper from "./components/PageLoaderWrapper";
 
 export const metadata: Metadata = {
-  title: "Green Valley Coaching Institute | PAT, CPAT, BHU, ICAR, CUET Prep | Sehore, MP",
-  description: "Green Valley Coaching Institute (GVCI) — 14 Years of Excellence in Sehore, Madhya Pradesh. Specialized and proven coaching for PAT, CPAT, BHU, ICAR, CUET, and ADDET/DAHET. Experience small batches, expert faculty, and exceptional results.",
-  keywords: ["PAT coaching Sehore", "CPAT coaching MP", "BHU entrance prep", "ICAR coaching", "CUET coaching Madhya Pradesh", "Green Valley Institute Sehore", "agriculture coaching Sehore", "best PAT institute MP"],
+  title: "Green Valley Coaching Institute | PAT, PVT, BHU, CUET(ICAR) Prep | Sehore, MP",
+  description: "Green Valley Coaching Institute (GVCI) — Since 2011 in Sehore, Madhya Pradesh. Specialized and proven coaching for PAT, PVT, BHU, CUET(ICAR), and ADDET/DAHET. Experience small batches, expert faculty, and exceptional results.",
+  keywords: ["PAT coaching Sehore", "PVT coaching MP", "BHU entrance prep", "ICAR coaching", "CUET(ICAR) coaching Madhya Pradesh", "Green Valley Institute Sehore", "agriculture coaching Sehore", "best PAT institute MP"],
   verification: {
     google: "TkjkfDJgcp-IEpaGyhYFjMApZzA8614Lw1C7-s9LN7I",
   },
@@ -38,7 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        {children}
+        <PageLoaderWrapper>{children}</PageLoaderWrapper>
       </body>
     </html>
   );

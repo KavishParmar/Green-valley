@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -5,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const milestones = [
-    { year: "2012", title: "Institute Founded", desc: "Started with a dream of excellence in agricultural education in Sehore.", icon: "🌱" },
+    { year: "2011", title: "Institute Founded", desc: "Started with a dream of excellence in agricultural education in Sehore.", icon: "🌱" },
     { year: "2014", title: "First PAT Toppers", desc: "Students from GVCI's early batches secured top ranks in MP PAT.", icon: "🏅" },
     { year: "2018", title: "BHU & ICAR Coaching Launched", desc: "Added specialized BHU & ICAR coaching after high demand from students.", icon: "📚" },
     { year: "2020", title: "Historic PAT Results", desc: "Rohit Purbiya secured BHU All India Rank 38 & PAT All MP Rank 5.", icon: "🏆" },

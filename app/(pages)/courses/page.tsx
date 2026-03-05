@@ -22,8 +22,8 @@ const courseDetails = [
         seats: "Max 40 Students",
         examBody: "MP Vyapam",
         target: "B.Sc. Agriculture in MP State Universities",
-        batches: ["Morning Batch: 6:30 – 10:00 AM", "Evening Batch: 3:00 – 6:30 PM"],
-        syllabus: ["Physics (NCERT Class 11 & 12)", "Chemistry (Inorganic, Organic, Physical)", "Biology / Mathematics", "Agriculture Science Basics", "Aptitude & GK"],
+        batches: ["Morning Batch: 7:00 AM – 2:00 PM", "Evening Batch: 1:00 PM – 7:00 PM"],
+        syllabus: ["Ag-1 PCBM (Physics, Chemistry, Maths, Biology)", "Ag- 2 crop production", "Ag- 3 Animal husbandry"],
         highlights: [
             "10+ years of PAT-specific teaching methodology",
             "Weekly topic-wise tests + Monthly mock exams",
@@ -34,16 +34,16 @@ const courseDetails = [
         facilities: ["AC Classrooms", "Digital Boards", "Library Access", "Hostel Referral", "Online Resources"],
     },
     {
-        id: "cpat",
-        name: "CPAT",
-        full: "Central Pre-Agriculture Test",
+        id: "pvt",
+        name: "PVT",
+        full: "Pre-Veterinary Test",
         color: "#3b82f6",
         emoji: "🌱",
         duration: "1 Year",
         seats: "Max 35 Students",
         examBody: "ICAR / Central Universities",
         target: "B.Sc. Agriculture in Central & Deemed Universities",
-        batches: ["Morning Batch: 7:00 – 10:30 AM", "Afternoon Batch: 12:30 – 4:00 PM"],
+        batches: ["Morning Batch: 7:00 AM – 2:00 PM", "Evening Batch: 1:00 PM – 7:00 PM"],
         syllabus: ["Physics", "Chemistry (Full)", "Biology", "Agriculture", "English & Reasoning"],
         highlights: [
             "Central University–focused strategy sessions",
@@ -64,7 +64,7 @@ const courseDetails = [
         seats: "Max 30 Students",
         examBody: "Banaras Hindu University",
         target: "B.Sc. Agriculture / Sciences at BHU Varanasi",
-        batches: ["Regular Batch: 8:00 AM – 2:00 PM", "Intensive Weekend: Sat & Sun 6 hrs"],
+        batches: ["Morning Batch: 7:00 AM – 2:00 PM", "Evening Batch: 1:00 PM – 7:00 PM"],
         syllabus: ["Physics (BHU Syllabus)", "Chemistry (BHU Pattern)", "Biology", "Mathematics", "English Proficiency"],
         highlights: [
             "Faculty include BHU alumni & past rankers",
@@ -76,16 +76,16 @@ const courseDetails = [
         facilities: ["BHU-Specific Resource Library", "Online Mock Platform", "Mentoring by BHU Toppers", "Hostel Guidance", "Scholarship Assistance"],
     },
     {
-        id: "cpet",
-        name: "CPET",
-        full: "Combined Pre-Science Examination Test",
+        id: "cuet",
+        name: "CUET",
+        full: "Common University Entrance Test",
         color: "#8b5cf6",
         emoji: "🔬",
         duration: "1 Year",
         seats: "Max 35 Students",
-        examBody: "MP Professional Examination Board",
-        target: "B.Sc. (PCB/PCM) in MP State Colleges",
-        batches: ["Morning Batch: 6:30 – 10:00 AM", "Evening Batch: 4:00 – 7:30 PM"],
+        examBody: "National Testing Agency",
+        target: "B.Sc. in Central Universities",
+        batches: ["Morning Batch: 7:00 AM – 2:00 PM", "Evening Batch: 1:00 PM – 7:00 PM"],
         syllabus: ["Physics (Class 11 & 12 NCERT)", "Chemistry (Full)", "Biology", "Mathematics", "English & Aptitude"],
         highlights: [
             "Strong focus on conceptual clarity",
@@ -100,6 +100,7 @@ const courseDetails = [
 
 export default function CoursesPage() {
     const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
+    const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
     useEffect(() => {
         gsap.utils.toArray<HTMLElement>(".course-card").forEach((card, i) => {
@@ -134,7 +135,7 @@ export default function CoursesPage() {
                             <div key={course.id} className="course-card" style={{ background: `${course.color}0d`, border: `1px solid ${course.color}30`, borderRadius: "24px", overflow: "hidden" }}>
                                 {/* Header */}
                                 <div style={{ padding: "2.5rem 2.5rem 0", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem" }}>
-                                    <div>
+                                    <div style={{ flex: 1 }}>
                                         <div style={{ fontSize: "3rem", marginBottom: "0.5rem" }}>{course.emoji}</div>
                                         <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
                                             <span style={{ fontSize: "2.5rem", fontWeight: 900, color: course.color }}>{course.name}</span>
@@ -143,9 +144,14 @@ export default function CoursesPage() {
                                         </div>
                                         <p style={{ color: "rgba(255,255,255,0.45)", marginTop: "0.3rem" }}>{course.full}</p>
                                     </div>
-                                    <div style={{ textAlign: "right" }}>
-                                        <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>Exam Body: {course.examBody}</div>
-                                        <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem", marginTop: "0.2rem" }}>{course.target}</div>
+                                    <div style={{ textAlign: "right", display: "flex", flexDirection: "column", gap: "1rem", alignItems: "flex-end" }}>
+                                        <div>
+                                            <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>Exam Body: {course.examBody}</div>
+                                            <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem", marginTop: "0.2rem" }}>{course.target}</div>
+                                        </div>
+                                        <Link href="/enquiry-form" style={{ background: course.color, color: "#fff", padding: "0.6rem 1.5rem", borderRadius: "50px", fontWeight: 700, textDecoration: "none", fontSize: "0.85rem", whiteSpace: "nowrap" }}>
+                                            Apply Now →
+                                        </Link>
                                     </div>
                                 </div>
 
@@ -258,11 +264,11 @@ export default function CoursesPage() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
                     {[
                         { title: "Foundation Course", eligibility: "Class 10th Pass", duration: "2 Years", batch: "15th of March 2026", color: "#22a15a" },
-                        { title: "Regular Course", eligibility: "Class 12th Pass", duration: "1 Year", batch: "15th of March 2026", color: "#3b82f6" },
+                        { title: "Regular Course", eligibility: "Class 11th Pass", duration: "1 Year", batch: "15th of March 2026", color: "#3b82f6" },
                         { title: "Droppers Course", eligibility: "Class 12th Pass", duration: "1 Year", batch: "15th of March 2026", color: "#d4a017" },
                         { title: "Capsule Course", eligibility: "Targeted Students", duration: "6 Months", batch: "15th of March 2026", color: "#8b5cf6" },
-                        { title: "PCMB Special", eligibility: "Class 11/12", duration: "4 Months", batch: "15th of March 2026", color: "#e34a6f" },
-                        { title: "Crash Course", eligibility: "After 12th Board", duration: "2 Months", batch: "15th of March 2026", color: "#0ea5e9" }
+                        { title: "PCMB Special", eligibility: "All Students", duration: "4 Months", batch: "15th of March 2026", color: "#e34a6f" },
+                        { title: "Crash Course", eligibility: "After 12th Board", duration: "3-4 Months", batch: "15th of March 2026", color: "#0ea5e9" }
                     ].map(b => (
                         <div key={b.title} style={{ background: "var(--dark)", border: `1px solid ${b.color}40`, borderRadius: "16px", padding: "2rem", transition: "all 0.3s ease", cursor: "pointer", boxShadow: `0 4px 20px ${b.color}10` }} onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = `0 10px 30px ${b.color}20`; }} onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = `0 4px 20px ${b.color}10`; }}>
                             <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: b.color, marginBottom: "1.25rem" }}>{b.title}</h3>
@@ -324,16 +330,52 @@ export default function CoursesPage() {
                     <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800 }}>Course <span className="gold-text">Queries</span></h2>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                     {[
-                        { q: "Which course is best for B.Sc. Agriculture?", a: "If you are focusing on Madhya Pradesh, MP-PAT is the go-to exam. For top-tier central universities, CPAT and BHU Entrance are highly recommended." },
+                        { q: "Which course is best for B.Sc. Agriculture?", a: "If you are focusing on Madhya Pradesh, MP-PAT is the go-to exam. For top-tier central universities, PVT and BHU Entrance are highly recommended." },
                         { q: "Do you provide online batches as well?", a: "Yes, we provide hybrid learning options. All our students get access to recorded lectures and digital notes via our portal." },
                         { q: "Is there a crash course available?", a: "We typically launch intensive 45-day crash courses 2 months before the exam dates. Enquire now to get notified." },
                         { q: "How are the scholarship tests conducted?", a: "Scholarship tests are conducted every Sunday at our main center. The test covers basic Aptitude and General Science." }
                     ].map((faq, i) => (
-                        <div key={i} style={{ padding: "2rem", background: "rgba(255,255,255,0.04)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.08)" }}>
-                            <h3 style={{ color: "var(--gold)", fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.75rem" }}>Q: {faq.q}</h3>
-                            <p style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>{faq.a}</p>
+                        <div key={i}>
+                            <button
+                                onClick={() => setExpandedFAQ(expandedFAQ === i ? null : i)}
+                                style={{
+                                    width: "100%",
+                                    padding: "1.5rem",
+                                    background: expandedFAQ === i ? "rgba(212,160,23,0.15)" : "rgba(255,255,255,0.04)",
+                                    border: `1px solid ${expandedFAQ === i ? "rgba(212,160,23,0.3)" : "rgba(255,255,255,0.08)"}`,
+                                    borderRadius: "16px",
+                                    color: "var(--gold)",
+                                    fontSize: "1.1rem",
+                                    fontWeight: 700,
+                                    textAlign: "left",
+                                    cursor: "pointer",
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    transition: "all 0.3s ease"
+                                }}
+                            >
+                                <span>Q: {faq.q}</span>
+                                <span style={{ fontSize: "1.3rem", minWidth: "30px", textAlign: "center" }}>
+                                    {expandedFAQ === i ? "−" : "+"}
+                                </span>
+                            </button>
+                            {expandedFAQ === i && (
+                                <div style={{
+                                    padding: "1.5rem",
+                                    background: "rgba(255,255,255,0.02)",
+                                    border: "1px solid rgba(212,160,23,0.2)",
+                                    borderTop: "none",
+                                    borderRadius: "0 0 16px 16px",
+                                    color: "rgba(255,255,255,0.6)",
+                                    lineHeight: 1.6,
+                                    marginBottom: "0.5rem"
+                                }}>
+                                    {faq.a}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

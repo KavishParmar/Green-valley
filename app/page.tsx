@@ -32,14 +32,14 @@ const courses = [
     desc: "Comprehensive preparation for MP PAT with expert faculty, weekly tests, and personalized mentoring.",
   },
   {
-    id: "cpat",
-    name: "CPAT",
-    full: "Central Pre-Agriculture Test",
+    id: "pvt",
+    name: "PVT",
+    full: "Pre-Veterinary Test",
     color: "#3b82f6",
     bg: "rgba(59,130,246,0.1)",
     border: "rgba(59,130,246,0.25)",
     emoji: "🌱",
-    desc: "Specialized CPAT coaching with national-level test series and all-India rank prediction.",
+    desc: "Specialized PVT coaching with national-level test series and all-India rank prediction.",
   },
   {
     id: "bhu",
@@ -145,19 +145,19 @@ export default function Home() {
   return (
     <>
       <BookPreloader onComplete={() => setIsLoading(false)} />
-      <main style={{ filter: isLoading ? "blur(10px)" : "none", transition: "filter 1.2s cubic-bezier(0.2, 1, 0.3, 1)" }}>
+      <main style={{ filter: isLoading ? "blur(10px)" : "none", transition: "filter 0.6s cubic-bezier(0.2, 1, 0.3, 1)" }}>
         <Navbar />
 
-        {/* ─── SIMPLE PREMIUM HERO ─── */}
-        <section
-          id="hero"
-          style={{
-            minHeight: "100vh",
-            background: "radial-gradient(ellipse at center, rgba(15,61,36,0.4) 0%, var(--dark) 70%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "0 1.5rem",
+      {/* ─── SIMPLE PREMIUM HERO ─── */}
+      <section
+        id="hero"
+        style={{
+          minHeight: "100vh",
+          background: "radial-gradient(ellipse at center, rgba(15,61,36,0.4) 0%, var(--dark) 70%)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "0 1.5rem",
             paddingTop: "100px",
             position: "relative",
             overflow: "hidden",
@@ -175,13 +175,13 @@ export default function Home() {
           />
 
           <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 10 }} ref={heroTextRef}>
-            <span className="animate-in section-label" style={{ marginBottom: "1.5rem" }}>🌿 Established 2015 · Excellence in Agriculture</span>
+            <span className="animate-in section-label" style={{ marginBottom: "1.5rem" }}>🌿 Established 2011 · Excellence in Agriculture</span>
             <h1 className="animate-in" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", fontWeight: 950, lineHeight: 0.95, letterSpacing: "-0.04em", marginBottom: "2rem" }}>
               <span style={{ color: "#fff" }}>Green</span> <span className="gold-text">Valley</span><br />
               <span className="green-text" style={{ fontSize: "0.8em" }}>Coaching Institute</span>
             </h1>
             <p className="animate-in" style={{ fontSize: "1.25rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "3.5rem", maxWidth: "680px", margin: "0 auto 3.5rem" }}>
-              The premier destination for PAT, CPAT, BHU, and CPET preparation in Sehore. Expert faculty, proven methodology, and a supportive environment for future agricultural leaders.
+              The premier destination for PAT, CUET(ICAR), BHU, and PVT preparation in Sehore. Expert faculty, proven methodology, and a supportive environment for future agricultural leaders.
             </p>
             <div className="animate-in" style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2.5rem" }}>
               <a href="/admission" className="btn-gold" style={{ textDecoration: "none", padding: "1.1rem 2.8rem", fontSize: "1.1rem" }}>Explore Admission →</a>
@@ -328,17 +328,17 @@ export default function Home() {
         {/* ─── LIFE AT GREEN VALLEY SECTION ─── */}
         <LifeAtGreenValley isHomePage={true} />
 
-        {/* ─── ABOUT SECTION (Condensed) ─── */}
-        <section id="about" className="reveal-section" style={{ padding: "4rem 1.5rem", background: "rgba(15,61,36,0.15)", position: "relative" }}>
+        {/* ─── ABOUT US SECTION (Condensed) ─── */}
+        <section id="about-us" className="reveal-section" style={{ padding: "4rem 1.5rem", background: "rgba(15,61,36,0.15)", position: "relative" }}>
           <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "4rem", alignItems: "center" }}>
               <div>
-                <span className="section-label">Since 2015</span>
+                <span className="section-label">Since 2011</span>
                 <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 950, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "2rem" }}>
                   Cultivating <span className="gold-text">Agricultural</span> Excellence
                 </h2>
                 <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
-                  Started with just 12 students, GVCI has grown into the premier coaching hub for PAT and CPAT in Sehore. Our mission is to bridge the gap between rural talent and India's top agricultural universities. We believe results come from strong concepts, disciplined testing, and a happy, motivated campus environment.
+                  Started with just 12 students, GVCI has grown into the premier coaching hub for PAT and PVT in Sehore. Our mission is to bridge the gap between rural talent and India's top agricultural universities. We believe results come from strong concepts, disciplined testing, and a happy, motivated campus environment.
                 </p>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
                   <div>
@@ -395,16 +395,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── CONTACT SECTION ─── */}
-        <div id="contact" className="reveal-section">
-          <ContactForm />
-        </div>
-
         {/* ─── ACHIEVEMENTS SECTION ─── */}
         <AchievementsSection />
 
         {/* ─── STUDENT REVIEWS SECTION ─── */}
         <StudentReviewsSection />
+
+        {/* ─── CONTACT SECTION ─── */}
+        <div id="contact" className="reveal-section">
+          <ContactForm />
+        </div>
 
         <Footer />
       </main>

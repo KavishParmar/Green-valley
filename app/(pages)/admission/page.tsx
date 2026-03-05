@@ -6,7 +6,7 @@ import { useState } from "react";
 import AdmissionTabs from "../../components/ui/AdmissionTabs";
 
 const steps = [
-    { step: "01", title: "Choose Your Course", desc: "Select from PAT, CPAT, BHU, or CPET based on your goal and eligibility. Counseling available.", icon: "📚", color: "#22a15a" },
+    { step: "01", title: "Choose Your Course", desc: "Select from PAT, PVT, BHU, or CUET based on your goal and eligibility. Counseling available.", icon: "📚", color: "#22a15a" },
     { step: "02", title: "Eligibility Check", desc: "Verify you have completed Class 12 (PCB/PCM). Submit your marksheet for review.", icon: "✅", color: "#3b82f6" },
     { step: "03", title: "Fill Application", desc: "Complete the online/offline admission form with personal and academic details.", icon: "📝", color: "#d4a017" },
     { step: "04", title: "Document Verification", desc: "Submit Class 10 & 12 marksheets, Aadhar card, passport photo, and migration certificate.", icon: "📁", color: "#8b5cf6" },

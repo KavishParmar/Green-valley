@@ -69,7 +69,7 @@ export default function ContactForm() {
                         </div>
                         <div style={{ display: "grid", gap: "0.5rem" }}>
                             <label htmlFor="ct-phone" style={{ fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>Phone Number</label>
-                            <input id="ct-phone" name="phone" type="tel" required placeholder="+91 XXXXX XXXXX" style={inputStyle}
+                            <input id="ct-phone" name="phone" type="tel" required placeholder="9926205683" style={inputStyle}
                                 onFocus={(e) => { e.currentTarget.style.borderColor = "var(--gold)"; }}
                                 onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; }}
                             />
@@ -98,9 +98,9 @@ export default function ContactForm() {
                         <select id="ct-course" name="course" style={{ ...inputStyle, background: "rgba(5,15,9,1)" }}>
                             <option value="">Select a Course</option>
                             <option value="PAT">PAT – Pre-Agriculture Test</option>
-                            <option value="CPAT">CPAT – Central Pre-Agriculture Test</option>
+                            <option value="PVT">PVT – Pre-Veterinary Test</option>
                             <option value="BHU">BHU – Banaras Hindu University</option>
-                            <option value="CPET">CPET – Combined Pre-Science Examination</option>
+                            <option value="CUET">CUET – Common University Entrance Test</option>
                         </select>
                     </div>
 

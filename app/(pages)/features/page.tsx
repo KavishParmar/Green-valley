@@ -10,57 +10,92 @@ export default function FeaturesPage() {
             title: "Small Batch Sizes",
             icon: "👨‍🏫",
             desc: "Individual attention ensured for every student with limited batch strength, preventing students from getting lost in the crowd.",
-            img: "/gallery/classes/WhatsApp Image 2026-03-03 at 4.23.25 PM.jpeg",
+            img: "/gallery/features/Small Batches.jpeg",
             stats: "Focused Learning"
         },
         {
             title: "Expert Faculty",
             icon: "👩‍🔬",
             desc: "Multiple experienced and qualified teachers available for every subject. Special doubt-solving sessions available beyond regular class hours.",
-            img: "/gallery/seminar/WhatsApp Image 2026-03-03 at 4.23.08 PM.jpeg",
+            img: "/gallery/features/expert faculty.jpeg",
             stats: "Expert Faculty"
         },
         {
             title: "Green Valley Guardian",
             icon: "🤝",
             desc: "A unique 1:10 mentorship system. One dedicated GVCI member is assigned to every 10 students to resolve academic and personal queries promptly.",
-            img: "/gallery/top 3 dinner/WhatsApp Image 2026-03-03 at 4.19.30 PM.jpeg",
+            img: "/gallery/features/Guardian.jpeg",
             stats: "1-on-1 Guidance"
         },
         {
             title: "GVCI Library",
             icon: "📚",
             desc: "Available 24 hours. All exam-relevant books, previous year papers, and reference materials are available free of cost for our enrolled students.",
-            img: "/gallery/others/WhatsApp Image 2026-03-03 at 4.13.23 PM.jpeg",
+            img: "/gallery/features/library.png",
             stats: "24/7 Access"
         },
         {
             title: "Printed Notes",
             icon: "📖",
             desc: "Chapter-wise printed notes for every subject containing 24 years of solved questions and thousands of expected questions.",
-            img: "/gallery/others/WhatsApp Image 2026-03-03 at 4.28.30 PM.jpeg",
+            img: "/gallery/features/Printed Notes.png",
             stats: "Comprehensive Coverage"
         },
         {
             title: "Comprehensive Test Series",
             icon: "📉",
             desc: "Weekly Sunday tests, chapter completion tests, surprise tests, DTS/CTS series during revisions, and full mock exams to simulate the real environment.",
-            img: "/gallery/testimonials results/Screenshot 2026-03-03 203229.png",
+            img: "/gallery/features/Test series.jpeg",
             stats: "Real Exam Practice"
         },
         {
-            title: "Intensive Class Schedule",
-            icon: "📅",
-            desc: "6 hours of daily classes. Extra doubt-clearing every Saturday and test solution classes every Monday. Revisions continue until the exam day.",
-            img: "/gallery/seminar/WhatsApp Image 2026-03-03 at 4.30.29 PM.jpeg",
-            stats: "Structured Routine"
+            title: "Doubt Clearing Classes",
+            icon: "❓",
+            desc: "Regular doubt-clearing sessions beyond regular class hours. Every question is answered with detailed explanations until complete clarity is achieved.",
+            img: "/gallery/features/doubt classes.jpeg",
+            stats: "Query Resolution"
         },
         {
             title: "Motivational Sessions",
             icon: "🏆",
             desc: "Regular motivation by toppers, subject experts, and achievers. Top 5 students are honored every Sunday during weekly tests to maintain competitive spirit.",
-            img: "/gallery/ganesh utsav/g25/Screenshot 2026-03-03 203348.png",
+            img: "/gallery/features/Motivation classes.jpeg",
             stats: "Constant Encouragement"
+        },
+        {
+            title: "Personal Guidance",
+            icon: "🎯",
+            desc: "One-on-one counselling sessions to understand each student's strengths, weaknesses, and goals. Personalized study plans and career guidance provided.",
+            img: "/gallery/features/Personal guidance.jpeg",
+            stats: "Tailored Support"
+        },
+        {
+            title: "Career Counselling",
+            icon: "💼",
+            desc: "Expert counselling sessions for course selection and career planning. Get guidance from senior faculty on which exam is best suited for you.",
+            img: "/gallery/features/counselling.jpeg",
+            stats: "Career Planning"
+        },
+        {
+            title: "Celebrate Small Wins",
+            icon: "🌟",
+            desc: "We celebrate every achievement of our students. Weekly recognition programs, awards, and appreciation to boost confidence and maintain motivation.",
+            img: "/gallery/features/celebrate small wins to motivate.jpeg",
+            stats: "Recognition"
+        },
+        {
+            title: "Celebrate Rituals & Culture",
+            icon: "🎭",
+            desc: "Regular cultural events, celebrations of festivals, and rituals throughout the year. Balanced lifestyle combining studies with cultural traditions.",
+            img: "/gallery/features/Celebrate rituals .jpeg",
+            stats: "Holistic Growth"
+        },
+        {
+            title: "Annual Travel & Adventure",
+            icon: "🚌",
+            desc: "Annual educational and recreational trips for students to refresh their minds. Nature exposure combined with team-building activities and bonding.",
+            img: "/gallery/features/Annual Travel.jpeg",
+            stats: "Mental Refresh"
         }
     ];
 
@@ -172,7 +207,7 @@ export default function FeaturesPage() {
                         Where Goals Turn into <span className="gold-text">Achievements</span>
                     </h2>
                     <p style={{ fontSize: "1.2rem", color: "rgba(255,255,255,0.6)", marginBottom: "3.5rem" }}>
-                        Join the community that produced AIR 1 in CPAT and hundreds of successful university selections across India.
+                        Join the community that produced AIR 1 in PVT and hundreds of successful university selections across India.
                     </p>
                     <Link href="/admission" className="btn-gold" style={{ padding: "1.2rem 3.5rem", fontSize: "1.1rem" }}>Start Your Journey →</Link>
                 </div>

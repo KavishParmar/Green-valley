@@ -14,9 +14,9 @@ export default function Footer() {
 
     const courses = [
         { label: "PAT", href: "/courses" },
-        { label: "CPAT", href: "/courses" },
-        { label: "BHU", href: "/courses" },
-        { label: "CPET", href: "/courses" },
+        { label: "PVT", href: "/courses" },
+        { label: "BHU Entrance", href: "/courses" },
+        { label: "CUET(ICAR)", href: "/courses" },
         { label: "ICAR", href: "/courses" },
     ];
 
@@ -55,7 +55,7 @@ export default function Footer() {
                                 }}
                             >
                                 <Image
-                                    src="/gallery/greenvalleylogo.jpg"
+                                    src="/gallery/others/logo.jpeg"
                                     alt="GVCI Logo"
                                     width={48}
                                     height={48}
@@ -70,7 +70,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.875rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                            10+ years of nurturing future agricultural leaders since 2015. Expert coaching for PAT, CPAT, BHU, and CPET in Sehore, MP.
+                            Since 2011, nurturing future agricultural leaders. Expert coaching for PAT, CUET(ICAR), BHU, and PVT in Sehore, MP.
                         </p>
                         {/* Social Links */}
                         <div style={{ display: "flex", gap: "0.75rem" }}>
@@ -242,7 +242,7 @@ export default function Footer() {
                                     label: "Englishpura, Sehore,\nMadhya Pradesh 466001",
                                     icon: "📍",
                                 },
-                                { label: "+91 94254 23001\n+91 98271 56840", icon: "📞" },
+                                { label: "9926205683\n9340534982", icon: "📞" },
                                 { label: "info@greenvalley.edu.in\nadmissions@greenvalley.edu.in", icon: "✉️" },
                                 { label: "Mon – Sat: 7:00 AM – 8:00 PM", icon: "🕐" },
                             ].map((item) => (

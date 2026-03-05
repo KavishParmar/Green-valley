@@ -5,6 +5,14 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: {
+      "@next/next/no-styled-jsx-in-document": "off",
+      "@next/next/no-css-in-js": "off",
+      "react/style-prop-object": "off",
+      "no-inline-styles": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

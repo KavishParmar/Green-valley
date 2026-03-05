@@ -64,7 +64,7 @@ export default function ScholarshipPage() {
                     Scholarships That <span className="gold-text">Empower You</span>
                 </h1>
                 <p style={{ color: "rgba(255,255,255,0.6)", maxWidth: "560px", margin: "0 auto 2.5rem", fontSize: "1.05rem", lineHeight: 1.7 }}>
-                    Talent should never be limited by circumstances. Hundreds of scholarships awarded to deserving students since 2015. You could be next.
+                    Talent should never be limited by circumstances. Hundreds of scholarships awarded to deserving students since 2011. You could be next.
                 </p>
                 <Link href="/admission#form" className="btn-gold" style={{ fontSize: "1.05rem" }}>Apply for Scholarship →</Link>
             </section>

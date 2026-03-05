@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -9,15 +9,27 @@ if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+// Auto-scrolling carousel images
+const carouselImages = [
+    { src: "/gallery/Life at gvci/1 Trips.jpeg", title: "Annual Student Trips" },
+    { src: "/gallery/Life at gvci/2 Cultural celebrations.jpeg", title: "Cultural Celebrations" },
+    { src: "/gallery/Life at gvci/3 Class fun.jpeg", title: "Class Fun & Bonding" },
+    { src: "/gallery/Life at gvci/4 nature Travel.jpeg", title: "Nature Travel Adventures" },
+    { src: "/gallery/Life at gvci/5 Respecting rituals.jpeg", title: "Respecting Traditions" },
+    { src: "/gallery/Life at gvci/6 Class gathering.jpeg", title: "Class Gatherings" },
+    { src: "/gallery/Life at gvci/7 Win prizes.jpeg", title: "Winning & Celebrations" },
+];
+
 const galleryImages = [
-    { src: "/gallery/travel/25/WhatsApp Image 2026-03-03 at 4.43.18 PM.jpeg", caption: "Annual Student Trip" },
-    { src: "/gallery/ganesh utsav/WhatsApp Image 2026-03-03 at 4.14.00 PM.jpeg", caption: "Cultural Events" },
-    { src: "/gallery/top 3 dinner/WhatsApp Image 2026-03-03 at 4.19.30 PM.jpeg", caption: "Test Winners" },
-    { src: "/gallery/travel/t24/WhatsApp Image 2026-03-03 at 4.30.14 PM.jpeg", caption: "Nature Trips" },
+    { src: "/gallery/Life at gvci/Annual student trips.jpeg", caption: "Annual Student Trip" },
+    { src: "/gallery/Life at gvci/Cultural events.jpeg", caption: "Cultural Events" },
+    { src: "/gallery/Life at gvci/Test winners.jpeg", caption: "Test Winners" },
+    { src: "/gallery/Life at gvci/Nature trips.jpeg", caption: "Nature Trips" },
 ];
 
 export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?: boolean }) {
     const sectionRef = useRef<HTMLElement>(null);
+    const carouselRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!sectionRef.current) return;
@@ -39,6 +51,26 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
         );
     }, []);
 
+    // Auto-scroll carousel
+    useEffect(() => {
+        if (!carouselRef.current) return;
+
+        const carousel = carouselRef.current;
+        const imageWidth = carousel.offsetWidth / 3; // Show 3 images at a time
+        let scrollPosition = 0;
+
+        const scrollCarousel = () => {
+            scrollPosition -= 2; // Speed of scroll
+            if (Math.abs(scrollPosition) >= carousel.scrollWidth / 2) {
+                scrollPosition = 0; // Reset to beginning
+            }
+            carousel.style.transform = `translateX(${scrollPosition}px)`;
+        };
+
+        const interval = setInterval(scrollCarousel, 30);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section
             ref={sectionRef}
@@ -46,6 +78,75 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
             style={{ padding: "4rem 1.5rem", background: "rgba(10,30,20,0.5)", position: "relative" }}
         >
             <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+                {/* Auto-scrolling Carousel Section */}
+                <div style={{ marginBottom: "6rem" }}>
+                    <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+                        <span className="section-label">Life at GVCI</span>
+                        <h2 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 950, letterSpacing: "-0.03em" }}>
+                            Moments That <span className="gold-text">Matter</span>
+                        </h2>
+                        <p style={{ color: "rgba(255,255,255,0.6)", maxWidth: "600px", margin: "1rem auto 0", fontSize: "1rem" }}>
+                            Experience the vibrant and dynamic culture at GVCI beyond academics
+                        </p>
+                    </div>
+
+                    <div style={{
+                        position: "relative",
+                        overflow: "hidden",
+                        height: "400px"
+                    }}>
+                        <div
+                            ref={carouselRef}
+                            style={{
+                                display: "flex",
+                                gap: "1.5rem",
+                                height: "100%",
+                                padding: "1.5rem",
+                                position: "relative",
+                                willChange: "transform"
+                            }}
+                        >
+                            {/* Duplicate carousel for seamless loop */}
+                            {[...carouselImages, ...carouselImages].map((img, idx) => (
+                                <div
+                                    key={idx}
+                                    style={{
+                                        position: "relative",
+                                        minWidth: "350px",
+                                        height: "100%",
+                                        borderRadius: "16px",
+                                        overflow: "hidden",
+                                        flexShrink: 0,
+                                        border: "1px solid rgba(255,255,255,0.1)"
+                                    }}
+                                >
+                                    <Image
+                                        src={img.src}
+                                        alt={img.title}
+                                        fill
+                                        style={{ objectFit: "cover" }}
+                                        unoptimized
+                                    />
+                                    <div style={{
+                                        position: "absolute",
+                                        inset: 0,
+                                        background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%)",
+                                        display: "flex",
+                                        alignItems: "flex-end",
+                                        padding: "2rem"
+                                    }}>
+                                        <div>
+                                            <p style={{ color: "var(--gold)", fontSize: "0.8rem", fontWeight: 700, marginBottom: "0.5rem", textTransform: "uppercase", letterSpacing: "0.1em" }}>GVCI Life</p>
+                                            <h3 style={{ color: "#fff", fontSize: "1.3rem", fontWeight: 700 }}>{img.title}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Beyond Academics Section */}
                 <div style={{ textAlign: "center", marginBottom: "4rem" }}>
                     <span className="section-label">Beyond Academics</span>
                     <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 950, letterSpacing: "-0.03em" }}>
@@ -130,7 +231,7 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
 
                 {isHomePage && (
                     <div style={{ textAlign: "center", marginTop: "3rem" }}>
-                        <Link href="/life-at-green-valley" className="btn-gold" style={{ padding: "0.8rem 2.5rem", fontSize: "0.9rem" }}>
+                        <Link href="/life-at-gvci" className="btn-gold" style={{ padding: "0.8rem 2.5rem", fontSize: "0.9rem" }}>
                             View More Moments →
                         </Link>
                     </div>
