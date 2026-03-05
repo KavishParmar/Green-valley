@@ -37,13 +37,13 @@ const leaders = [
 ];
 
 const faculty = [
-    { name: "Anubhav Sir", role: "Expert Faculty", img: "/gallery/faculty/Anubhav Sir.png" },
-    { name: "Atul Yadav Sir", role: "Expert Faculty", img: "/gallery/faculty/Atul Yadav Sir.png" },
-    { name: "Buddhi Prakash Sir", role: "Expert Faculty", img: "/gallery/faculty/Buddhi Prakash Sir.png" },
-    { name: "Chandrabhan Sir", role: "Expert Faculty", img: "/gallery/faculty/Chandrabhan Sir.png" },
-    { name: "Manish Dhangar Sir", role: "Expert Faculty", img: "/gallery/faculty/Manish Dhangar Sir.png" },
-    { name: "Rohit Patel Sir", role: "Expert Faculty", img: "/gallery/faculty/Rohit Patel Sir.png" },
-    { name: "Vinit Patidar Sir", role: "Expert Faculty", img: "/gallery/faculty/Vinit Patidar Sir.png" },
+    { name: "Anubhav Sir", role: "Expert Faculty", img: "/gallery/Faculty/Anubhav Sir.png" },
+    { name: "Atul Yadav Sir", role: "Expert Faculty", img: "/gallery/Faculty/Atul Yadav Sir.png" },
+    { name: "Buddhi Prakash Sir", role: "Expert Faculty", img: "/gallery/Faculty/Buddhi Prakash Sir.png" },
+    { name: "Chandrabhan Sir", role: "Expert Faculty", img: "/gallery/Faculty/Chandrabhan Sir.png" },
+    { name: "Manish Dhangar Sir", role: "Expert Faculty", img: "/gallery/Faculty/Manish Dhangar Sir.png" },
+    { name: "Rohit Patel Sir", role: "Expert Faculty", img: "/gallery/Faculty/Rohit Patel Sir.png" },
+    { name: "Vinit Patidar Sir", role: "Expert Faculty", img: "/gallery/Faculty/Vinit Patidar Sir.png" },
 ];
 
 export default function AboutPage() {
