@@ -148,16 +148,16 @@ export default function Home() {
       <main style={{ filter: isLoading ? "blur(10px)" : "none", transition: "filter 0.6s cubic-bezier(0.2, 1, 0.3, 1)" }}>
         <Navbar />
 
-      {/* ─── SIMPLE PREMIUM HERO ─── */}
-      <section
-        id="hero"
-        style={{
-          minHeight: "100vh",
-          background: "radial-gradient(ellipse at center, rgba(15,61,36,0.4) 0%, var(--dark) 70%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "0 1.5rem",
+        {/* ─── SIMPLE PREMIUM HERO ─── */}
+        <section
+          id="hero"
+          style={{
+            minHeight: "100vh",
+            background: "radial-gradient(ellipse at center, rgba(15,61,36,0.4) 0%, var(--dark) 70%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0 1.5rem",
             paddingTop: "100px",
             position: "relative",
             overflow: "hidden",

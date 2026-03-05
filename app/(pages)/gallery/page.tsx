@@ -57,7 +57,6 @@ const allImages = [
     { "src": "/gallery/All images/ganesh utsav/g23/WhatsApp Image 2026-03-03 at 4.15.07 PM.jpeg", "folder": "Festivals" },
     { "src": "/gallery/All images/ganesh utsav/g24/WhatsApp Image 2026-03-03 at 4.26.25 PM.jpeg", "folder": "Festivals" },
     { "src": "/gallery/All images/ganesh utsav/g24/WhatsApp Image 2026-03-03 at 4.26.26 PM.jpeg", "folder": "Festivals" },
-    { "src": "/gallery/All images/ganesh utsav/g25/WhatsApp Image 2026-03-03 at 4.14.00 PM.jpeg", "folder": "Festivals" },
 
     // --- NATIONAL FESTIVALS ---
     { "src": "/gallery/All images/national festivals/WhatsApp Image 2026-03-03 at 4.02.22 PM.jpeg", "folder": "Festivals" },
@@ -123,7 +122,7 @@ const allImages = [
     { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.21 PM (1).jpeg", "folder": "Seminars" },
     { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.21 PM (2).jpeg", "folder": "Seminars" },
     { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.21 PM.jpeg", "folder": "Seminars" },
-   { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.22 PM (1).jpeg", "folder": "Seminars" },
+    { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.22 PM (1).jpeg", "folder": "Seminars" },
     { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.22 PM (2).jpeg", "folder": "Seminars" },
     { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.22 PM.jpeg", "folder": "Seminars" },
     { "src": "/gallery/All images/seminar/WhatsApp Image 2026-03-03 at 4.23.23 PM (1).jpeg", "folder": "Seminars" },
@@ -150,8 +149,8 @@ const allImages = [
     { "src": "/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.41.49 PM.jpeg", "folder": "Others" },
 
     // --- BATCH PHOTOS ---
-    { "src": "/gallery/batch/b22/WhatsApp Image 2026-03-03 at 4.09.31 PM.jpeg", "folder": "Batch Photos" },
-    { "src": "/gallery/batch/b23/WhatsApp Image 2026-03-03 at 4.11.46 PM.jpeg", "folder": "Batch Photos" },
+    { "src": "/gallery/All images/batch/b22/WhatsApp Image 2026-03-03 at 4.09.31 PM.jpeg", "folder": "Batch Photos" },
+    { "src": "/gallery/All images/batch/b23/WhatsApp Image 2026-03-03 at 4.11.46 PM.jpeg", "folder": "Batch Photos" },
 ];
 
 const experienceCategories = [
@@ -229,45 +228,45 @@ export default function GalleryPage() {
                 {/* Secondary Filters (Experience Categories) */}
                 {activePrimaryTab === "View By Experience" && (
                     <>
-                    <div
-                        ref={experienceRef}
-                        id="experience-scroll"
-                        style={{
-                            display: "flex",
-                            justifyContent: "flex-start",
-                            flexWrap: "nowrap",
-                            gap: "0.75rem",
-                            marginBottom: "1rem",
-                            overflowX: "auto",
-                            paddingBottom: "1rem",
-                            WebkitOverflowScrolling: "touch",
-                            scrollbarWidth: "thin",
-                            scrollbarColor: "rgba(212,160,23,0.4) rgba(255,255,255,0.05)"
-                        }}
-                    >
-                        {experienceCategories.map(cat => (
-                            <button
-                                key={cat}
-                                onClick={() => setActiveSubCategory(cat)}
-                                style={{
-                                    padding: "0.6rem 1.5rem",
-                                    borderRadius: "40px",
-                                    fontSize: "0.85rem",
-                                    fontWeight: 700,
-                                    background: activeSubCategory === cat ? "rgba(212,160,23,0.15)" : "rgba(255,255,255,0.03)",
-                                    color: activeSubCategory === cat ? "var(--gold)" : "rgba(255,255,255,0.6)",
-                                    border: `1px solid ${activeSubCategory === cat ? "var(--gold)" : "rgba(255,255,255,0.1)"}`,
-                                    cursor: "pointer",
-                                    transition: "all 0.3s ease",
-                                    whiteSpace: "nowrap",
-                                    flexShrink: 0
-                                }}
-                            >
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
-                    <div style={{ textAlign: "center", marginBottom: "3rem" }}></div>
+                        <div
+                            ref={experienceRef}
+                            id="experience-scroll"
+                            style={{
+                                display: "flex",
+                                justifyContent: "flex-start",
+                                flexWrap: "nowrap",
+                                gap: "0.75rem",
+                                marginBottom: "1rem",
+                                overflowX: "auto",
+                                paddingBottom: "1rem",
+                                WebkitOverflowScrolling: "touch",
+                                scrollbarWidth: "thin",
+                                scrollbarColor: "rgba(212,160,23,0.4) rgba(255,255,255,0.05)"
+                            }}
+                        >
+                            {experienceCategories.map(cat => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setActiveSubCategory(cat)}
+                                    style={{
+                                        padding: "0.6rem 1.5rem",
+                                        borderRadius: "40px",
+                                        fontSize: "0.85rem",
+                                        fontWeight: 700,
+                                        background: activeSubCategory === cat ? "rgba(212,160,23,0.15)" : "rgba(255,255,255,0.03)",
+                                        color: activeSubCategory === cat ? "var(--gold)" : "rgba(255,255,255,0.6)",
+                                        border: `1px solid ${activeSubCategory === cat ? "var(--gold)" : "rgba(255,255,255,0.1)"}`,
+                                        cursor: "pointer",
+                                        transition: "all 0.3s ease",
+                                        whiteSpace: "nowrap",
+                                        flexShrink: 0
+                                    }}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
+                        <div style={{ textAlign: "center", marginBottom: "3rem" }}></div>
                     </>
                 )}
 

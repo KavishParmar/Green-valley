@@ -55,7 +55,7 @@ export default function Footer() {
                                 }}
                             >
                                 <Image
-                                    src="/gallery/others/logo.jpeg"
+                                    src="/gallery/All images/others/logo.jpeg"
                                     alt="GVCI Logo"
                                     width={48}
                                     height={48}

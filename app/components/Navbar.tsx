@@ -70,7 +70,7 @@ export default function Navbar() {
                             }}
                         >
                             <Image
-                                src="/gallery/others/logo.jpeg"
+                                src="/gallery/All images/others/logo.jpeg"
                                 alt="GVCI Logo"
                                 width={44}
                                 height={44}
