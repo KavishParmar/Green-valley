@@ -122,16 +122,25 @@ export default function Home() {
 
         {showAnnouncement && (
           <div style={{ position: "fixed", inset: 0, zIndex: 9998, background: "rgba(0,0,0,0.58)", pointerEvents: "auto" }}>
-            <div style={{ width: "min(92vw, 720px)", position: "absolute", left: "50%", top: "52%", transform: "translate(-50%, -50%)" }}>
-              <div style={{ position: "relative", width: "100%", borderRadius: "14px", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,0.55)" }}>
+            <div
+              style={{
+                width: "min(92vw, 720px)",
+                maxHeight: "90vh",
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <div style={{ position: "relative", width: "100%", maxHeight: "90vh", borderRadius: "14px", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,0.55)" }}>
                 <Image
-                  src="/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.41.49 PM.jpeg"
+                  src="/gallery/posters/Announcement.png"
                   alt="Announcement"
                   width={1280}
                   height={1600}
                   priority
                   sizes="(max-width: 768px) 92vw, 720px"
-                  style={{ width: "100%", height: "auto", display: "block" }}
+                  style={{ width: "100%", height: "auto", maxHeight: "90vh", objectFit: "contain", display: "block" }}
                 />
                 <button
                   aria-label="Close announcement"
