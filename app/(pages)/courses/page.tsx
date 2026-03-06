@@ -149,10 +149,7 @@ export default function CoursesPage() {
                                             <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>Exam Body: {course.examBody}</div>
                                             <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem", marginTop: "0.2rem" }}>{course.target}</div>
                                         </div>
-                                        <Link href="/enquiry-form" style={{ background: course.color, color: "#fff", padding: "0.6rem 1.5rem", borderRadius: "50px", fontWeight: 700, textDecoration: "none", fontSize: "0.85rem", whiteSpace: "nowrap" }}>
-                                            Apply Now →
-                                        </Link>
-                                    </div>
+</div>
                                 </div>
 
                                 {/* Collapsible Body */}
@@ -278,6 +275,9 @@ export default function CoursesPage() {
                                 <div style={{ marginTop: "1rem", padding: "0.75rem", background: "rgba(212,160,23,0.1)", borderRadius: "8px", color: "var(--gold)", fontWeight: 700, textAlign: "center", border: "1px dashed rgba(212,160,23,0.3)" }}>
                                     Batch Starts: {b.batch}
                                 </div>
+                                <Link href="/enquiry-form" style={{ marginTop: "1rem", background: b.color, color: "#fff", padding: "0.7rem 1rem", borderRadius: "10px", textAlign: "center", textDecoration: "none", fontWeight: 700, fontSize: "0.9rem" }}>
+                                    Apply Now →
+                                </Link>
                             </div>
                         </div>
                     ))}
@@ -311,7 +311,7 @@ export default function CoursesPage() {
                                         <td style={{ padding: "1.25rem", fontWeight: 600 }}>{row.label}</td>
                                         {courseDetails.map(c => (
                                             <td key={c.id} style={{ padding: "1.25rem", textAlign: "center" }}>
-                                                {/* @ts-ignore */}
+                                                {/* @ts-expect-error dynamic property lookup by comparison row key */}
                                                 {c[row.key]}
                                             </td>
                                         ))}
@@ -385,3 +385,4 @@ export default function CoursesPage() {
         </main>
     );
 }
+

@@ -94,13 +94,16 @@ const StudentReviewsSection = () => {
                                 key={index}
                                 className="card-premium"
                                 style={{
-                                    width: "350px",
+                                    width: "320px",
                                     flexShrink: 0,
-                                    padding: "2rem",
+                                    padding: "1.6rem",
                                     display: "flex",
                                     flexDirection: "column",
                                     gap: "1.25rem",
-                                    borderRadius: "16px"
+                                    borderRadius: "16px",
+                                    background: "rgba(255,255,255,0.045)",
+                                    border: "1px solid rgba(255,255,255,0.12)",
+                                    boxShadow: "0 16px 34px rgba(0,0,0,0.33)"
                                 }}
                             >
                                 {/* Stars */}
@@ -113,12 +116,12 @@ const StudentReviewsSection = () => {
                                 {/* Text */}
                                 <p style={{
                                     color: "rgba(255,255,255,0.75)",
-                                    fontSize: "0.95rem",
+                                    fontSize: "0.9rem",
                                     lineHeight: 1.6,
                                     fontStyle: "italic",
                                     flexGrow: 1
                                 }}>
-                                    "{review.text}"
+                                    &ldquo;{review.text}&rdquo;
                                 </p>
 
                                 {/* Author */}
@@ -162,7 +165,13 @@ const StudentReviewsSection = () => {
                         100% { transform: translateX(-50%); }
                     }
                     .marquee-content {
-                        animation: scrollLeft 30s linear infinite;
+                        animation: scrollLeft 27s linear infinite;
+                    }
+                    @media (max-width: 640px) {
+                        .marquee-content > div {
+                            width: 280px !important;
+                            padding: 1.25rem !important;
+                        }
                     }
                 `}} />
 

@@ -1,13 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 // Auto-scrolling carousel images
 const carouselImages = [
@@ -30,26 +24,6 @@ const galleryImages = [
 export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?: boolean }) {
     const sectionRef = useRef<HTMLElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (!sectionRef.current) return;
-
-        gsap.fromTo(
-            sectionRef.current.querySelectorAll(".reveal-item"),
-            { opacity: 0, x: -30 },
-            {
-                opacity: 1,
-                x: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 75%",
-                }
-            }
-        );
-    }, []);
 
     // Auto-scroll carousel
     useEffect(() => {
@@ -90,13 +64,14 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
                         </p>
                     </div>
 
-                    <div style={{
+                    <div className="life-carousel-wrap" style={{
                         position: "relative",
                         overflow: "hidden",
                         height: "400px"
                     }}>
                         <div
                             ref={carouselRef}
+                            className="life-carousel-track"
                             style={{
                                 display: "flex",
                                 gap: "1.5rem",
@@ -110,6 +85,7 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
                             {[...carouselImages, ...carouselImages].map((img, idx) => (
                                 <div
                                     key={idx}
+                                    className="life-carousel-card"
                                     style={{
                                         position: "relative",
                                         minWidth: "350px",
@@ -125,7 +101,6 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
                                         alt={img.title}
                                         fill
                                         style={{ objectFit: "cover" }}
-                                        unoptimized
                                     />
                                     <div style={{
                                         position: "absolute",
@@ -195,7 +170,7 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
                         </ul>
                     </div>
 
-                    <div className="reveal-item" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+                    <div className="reveal-item life-gallery-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                         {galleryImages.map((img, i) => (
                             <div
                                 key={i}
@@ -212,7 +187,6 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
                                     alt={img.caption}
                                     fill
                                     style={{ objectFit: "cover" }}
-                                    unoptimized
                                 />
                                 <div style={{
                                     position: "absolute",
@@ -237,6 +211,37 @@ export default function LifeAtGreenValley({ isHomePage = false }: { isHomePage?:
                     </div>
                 )}
             </div>
+            <style jsx>{`
+                @media (max-width: 768px) {
+                    .life-carousel-wrap {
+                        height: 300px !important;
+                    }
+                    .life-carousel-track {
+                        padding: 0.5rem !important;
+                        gap: 0.8rem !important;
+                    }
+                    .life-carousel-card {
+                        min-width: 260px !important;
+                    }
+                    .life-gallery-grid {
+                        gap: 0.55rem !important;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .life-carousel-wrap {
+                        height: 280px !important;
+                        margin-left: -0.7rem;
+                        margin-right: -0.7rem;
+                    }
+                    .life-carousel-track {
+                        padding: 0.35rem !important;
+                        gap: 0.6rem !important;
+                    }
+                    .life-carousel-card {
+                        min-width: 235px !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

@@ -8,9 +8,9 @@ export default function EnquiryFormPage() {
     const [showToast, setShowToast] = useState(false);
     const [showReference, setShowReference] = useState(false);
     const [errors, setErrors] = useState<Record<string, boolean>>({});
-    const [formData, setFormData] = useState<Record<string, any>>({});
+    const [formData, setFormData] = useState<Record<string, string>>({});
 
-    const validateField = (name: string, value: any) => {
+    const validateField = (name: string, value: string) => {
         const newErrors = { ...errors };
         
         if (name === "mobileNumber") {
@@ -245,7 +245,7 @@ ${formData.reference === "yes" ? `
                             <div style={{ background: "rgba(212,160,23,0.05)", padding: "2rem", borderRadius: "16px", border: "1px solid rgba(212,160,23,0.2)" }}>
                                 <h3 style={{ color: "var(--gold)", marginBottom: "1.5rem", fontSize: "1.1rem", fontWeight: 700 }}>Reference Details</h3>
                                 
-                                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+                                <div className="reference-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
                                     <div>
                                         <label style={labelStyle}>Reference Name</label>
                                         <input type="text" name="referenceName" value={formData.referenceName || ""} onChange={handleInputChange} placeholder="Reference Name" style={inputStyle()} />
@@ -337,6 +337,9 @@ ${formData.reference === "yes" ? `
                 @media (max-width: 480px) {
                     section { padding-left: 1rem !important; padding-right: 1rem !important; }
                     form > div {
+                        grid-template-columns: 1fr !important;
+                    }
+                    .reference-grid {
                         grid-template-columns: 1fr !important;
                     }
                 }

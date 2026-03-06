@@ -19,19 +19,19 @@ const leaders = [
     {
         name: "Sunil Parmar Sir",
         role: "Founder",
-        img: "/gallery/faculty/Sunil Parmar Sir-Founder.png",
+        img: "/gallery/Faculty/Sunil Parmar Sir-Founder.png",
         bio: "Visionary founder of GVCI, dedicated to transforming agricultural education and empowering students across Madhya Pradesh."
     },
     {
         name: "Ashish Parmar Sir",
         role: "Director",
-        img: "/gallery/faculty/Ashish Parmar Sir-Director.png",
+        img: "/gallery/Faculty/Ashish Parmar Sir-Director.png",
         bio: "Leading the institute with strategic excellence and a commitment to academic quality and student success."
     },
     {
         name: "Varsha Parmar Mam",
         role: "Co-Director",
-        img: "/gallery/faculty/Varsha Parmar Mam-Co-Director.png",
+        img: "/gallery/Faculty/Varsha Parmar Mam-Co-Director.png",
         bio: "Ensuring smooth operations and academic coordination to provide the best learning environment for our students."
     }
 ];
@@ -134,7 +134,7 @@ export default function AboutPage() {
                     </div>
                     <div style={{ position: "relative", borderRadius: "32px", overflow: "hidden", aspectRatio: "16/10" }}>
                         <Image
-                            src="/gallery/ganesh utsav/WhatsApp Image 2026-03-03 at 4.14.00 PM.jpeg"
+                            src="/gallery/All images/ganesh utsav/g23/WhatsApp Image 2026-03-03 at 4.14.13 PM.jpeg"
                             alt="Culture at GVCI"
                             fill
                             style={{ objectFit: "cover" }}
@@ -255,3 +255,4 @@ export default function AboutPage() {
         </main>
     );
 }
+

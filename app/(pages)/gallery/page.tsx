@@ -144,12 +144,10 @@ const allImages = [
     { "src": "/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.34.24 PM.jpeg", "folder": "Others" },
     { "src": "/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.36.10 PM.jpeg", "folder": "Others" },
     { "src": "/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.41.48 PM (1).jpeg", "folder": "Others" },
-    { "src": "/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.41.48 PM.jpeg", "folder": "Others" },
     { "src": "/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.41.49 PM.jpeg", "folder": "Others" },
     { "src": "/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.41.49 PM.jpeg", "folder": "Others" },
 
     // --- BATCH PHOTOS ---
-    { "src": "/gallery/All images/batch/b22/WhatsApp Image 2026-03-03 at 4.09.31 PM.jpeg", "folder": "Batch Photos" },
     { "src": "/gallery/All images/batch/b23/WhatsApp Image 2026-03-03 at 4.11.46 PM.jpeg", "folder": "Batch Photos" },
 ];
 
@@ -190,20 +188,22 @@ export default function GalleryPage() {
                 </p>
             </section>
 
-            <section style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem 2rem" }}>
+            <section style={{ maxWidth: "1500px", margin: "0 auto", padding: "0 1.5rem 2rem" }}>
                 {/* Primary Tabs */}
-                <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1rem", marginBottom: "2rem" }}>
+                <div style={{ display: "flex", justifyContent: "center", flexWrap: "nowrap", gap: "0.65rem", marginBottom: "2rem", overflowX: "auto", whiteSpace: "nowrap", WebkitOverflowScrolling: "touch" }}>
                     <button
                         onClick={() => setActivePrimaryTab("All Photos")}
                         style={{
-                            padding: "0.75rem 2rem",
+                            padding: "0.6rem 1rem",
                             borderRadius: "60px",
                             fontWeight: 800,
+                            fontSize: "0.82rem",
                             background: activePrimaryTab === "All Photos" ? "var(--gold)" : "transparent",
                             color: activePrimaryTab === "All Photos" ? "var(--dark)" : "rgba(255,255,255,0.7)",
                             border: `1px solid ${activePrimaryTab === "All Photos" ? "var(--gold)" : "rgba(255,255,255,0.2)"}`,
                             cursor: "pointer",
-                            transition: "all 0.3s ease"
+                            transition: "all 0.3s ease",
+                            flexShrink: 0
                         }}
                     >
                         All Photos
@@ -211,14 +211,16 @@ export default function GalleryPage() {
                     <button
                         onClick={() => setActivePrimaryTab("View By Experience")}
                         style={{
-                            padding: "0.75rem 2rem",
+                            padding: "0.6rem 1rem",
                             borderRadius: "60px",
                             fontWeight: 800,
+                            fontSize: "0.82rem",
                             background: activePrimaryTab === "View By Experience" ? "var(--gold)" : "transparent",
                             color: activePrimaryTab === "View By Experience" ? "var(--dark)" : "rgba(255,255,255,0.7)",
                             border: `1px solid ${activePrimaryTab === "View By Experience" ? "var(--gold)" : "rgba(255,255,255,0.2)"}`,
                             cursor: "pointer",
-                            transition: "all 0.3s ease"
+                            transition: "all 0.3s ease",
+                            flexShrink: 0
                         }}
                     >
                         View By Experience
@@ -271,9 +273,9 @@ export default function GalleryPage() {
                 )}
 
                 {/* Gallery Grid */}
-                <div style={{
+                <div className="gallery-grid" style={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))",
                     gap: "1.25rem",
                     paddingBottom: "6rem",
                     marginTop: activePrimaryTab === "All Photos" ? "3rem" : "1rem"
@@ -311,7 +313,6 @@ export default function GalleryPage() {
                                 src={img.src}
                                 alt={`${img.folder} photo`}
                                 fill
-                                unoptimized
                                 style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
@@ -358,10 +359,11 @@ export default function GalleryPage() {
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
+                        className="lightbox-frame"
                         style={{
                             position: "relative",
-                            maxWidth: "90vw",
-                            maxHeight: "90vh",
+                            width: "min(78vw, 1100px)",
+                            maxHeight: "82vh",
                         }}
                     >
                         <button
@@ -388,8 +390,8 @@ export default function GalleryPage() {
                             src={lightboxSrc}
                             alt="Enlarged photo"
                             style={{
-                                maxWidth: "100%",
-                                maxHeight: "100%",
+                                width: "100%",
+                                maxHeight: "82vh",
                                 objectFit: "contain",
                                 display: "block"
                             }}
@@ -405,6 +407,21 @@ export default function GalleryPage() {
                 .hide-scrollbar {
                     -ms-overflow-style: none;
                     scrollbar-width: none;
+                }
+                @media (max-width: 768px) {
+                    .gallery-grid {
+                        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                        gap: 0.7rem !important;
+                    }
+                    .lightbox-frame {
+                        width: 92vw !important;
+                        max-height: 88vh !important;
+                    }
+                }
+                @media (min-width: 769px) and (max-width: 1200px) {
+                    .gallery-grid {
+                        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+                    }
                 }
             `}</style>
         </main>

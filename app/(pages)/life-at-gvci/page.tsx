@@ -84,6 +84,28 @@ export default function LifeAtGVCIPage() {
             </section>
 
             <Footer />
+            <style jsx>{`
+                @media (max-width: 768px) {
+                    h1 {
+                        font-size: clamp(2.3rem, 9vw, 3rem) !important;
+                    }
+                    h2 {
+                        font-size: clamp(1.8rem, 7vw, 2.2rem) !important;
+                    }
+                    p {
+                        font-size: 0.96rem !important;
+                        line-height: 1.65 !important;
+                    }
+                    section {
+                        padding-left: 1rem !important;
+                        padding-right: 1rem !important;
+                    }
+                    div[style*="padding: 6rem 4rem"] {
+                        padding: 2.2rem 1.2rem !important;
+                        border-radius: 24px !important;
+                    }
+                }
+            `}</style>
         </main>
     );
 }

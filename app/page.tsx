@@ -2,9 +2,7 @@
 import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import ContactForm from "./components/ContactForm";
 import Link from "next/link";
@@ -12,13 +10,7 @@ import StudentReviewsSection from "./components/ui/StudentReviewsSection";
 import AchievementsSection from "./components/ui/AchievementsSection";
 import LifeAtGreenValley from "./components/ui/LifeAtGreenValley";
 
-const BookPreloader = dynamic(() => import("./components/ui/BookPreloader"), { ssr: false });
 const AdmissionTabs = dynamic(() => import("./components/ui/AdmissionTabs"), { ssr: false });
-
-// Register GSAP plugins
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const courses = [
   {
@@ -105,48 +97,53 @@ const homeFeatures = [
 ];
 
 export default function Home() {
-  const heroTextRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
+
+  const closeAnnouncement = () => {
+    setShowAnnouncement(false);
+  };
 
   useEffect(() => {
-    if (isLoading) return;
-
-    // GSAP Animation for elements
-    gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-          },
-        }
-      );
-    });
-
-    if (heroTextRef.current) {
-      gsap.fromTo(
-        heroTextRef.current.querySelectorAll(".animate-in"),
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power3.out", delay: 0.6 }
-      );
+    const prev = document.body.style.overflow;
+    if (showAnnouncement) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = prev;
     }
-
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      document.body.style.overflow = prev;
     };
-  }, [isLoading]);
+  }, [showAnnouncement]);
 
   return (
     <>
-      <BookPreloader onComplete={() => setIsLoading(false)} />
-      <main style={{ filter: isLoading ? "blur(10px)" : "none", transition: "filter 0.6s cubic-bezier(0.2, 1, 0.3, 1)" }}>
+      <main>
         <Navbar />
+
+        {showAnnouncement && (
+          <div style={{ position: "fixed", inset: 0, zIndex: 9998, background: "rgba(0,0,0,0.58)", pointerEvents: "auto" }}>
+            <div style={{ width: "min(92vw, 720px)", position: "absolute", left: "50%", top: "52%", transform: "translate(-50%, -50%)" }}>
+              <div style={{ position: "relative", width: "100%", borderRadius: "14px", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,0.55)" }}>
+                <Image
+                  src="/gallery/All images/others/WhatsApp Image 2026-03-03 at 4.41.49 PM.jpeg"
+                  alt="Announcement"
+                  width={1280}
+                  height={1600}
+                  priority
+                  sizes="(max-width: 768px) 92vw, 720px"
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+                <button
+                  aria-label="Close announcement"
+                  onClick={closeAnnouncement}
+                  style={{ position: "absolute", top: "0.5rem", right: "0.5rem", width: "2rem", height: "2rem", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.7)", background: "rgba(5,15,9,0.75)", color: "#fff", fontSize: "1.2rem", fontWeight: 700, lineHeight: 1, cursor: "pointer" }}
+                >
+                  X
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ─── SIMPLE PREMIUM HERO ─── */}
         <section
@@ -174,7 +171,7 @@ export default function Home() {
             }}
           />
 
-          <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 10 }} ref={heroTextRef}>
+          <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 10 }}>
             <span className="animate-in section-label" style={{ marginBottom: "1.5rem" }}>🌿 Established 2011 · Excellence in Agriculture</span>
             <h1 className="animate-in" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", fontWeight: 950, lineHeight: 0.95, letterSpacing: "-0.04em", marginBottom: "2rem" }}>
               <span style={{ color: "#fff" }}>Green</span> <span className="gold-text">Valley</span><br />
@@ -211,7 +208,7 @@ export default function Home() {
         </section>
 
         {/* ─── COURSES SECTION ─── */}
-        <section id="courses" className="reveal-section" style={{ padding: "4rem 1.5rem", background: "rgba(5,15,9,0.8)", position: "relative" }}>
+        <section id="courses" style={{ padding: "4rem 1.5rem", background: "rgba(5,15,9,0.8)", position: "relative" }}>
           {/* Background glow effects */}
           <div style={{ position: "absolute", top: "10%", left: "5%", width: "300px", height: "300px", background: "rgba(34,161,90,0.15)", filter: "blur(120px)", borderRadius: "50%", pointerEvents: "none" }} />
           <div style={{ position: "absolute", bottom: "10%", right: "5%", width: "400px", height: "400px", background: "rgba(212,160,23,0.1)", filter: "blur(150px)", borderRadius: "50%", pointerEvents: "none" }} />
@@ -300,7 +297,7 @@ export default function Home() {
         </section>
 
         {/* ─── FEATURES SECTION ─── */}
-        <section id="features" className="reveal-section" style={{ padding: "4rem 1.5rem", background: "var(--dark)", position: "relative" }}>
+        <section id="features" style={{ padding: "4rem 1.5rem", background: "var(--dark)", position: "relative" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
               <span className="section-label">The GVCI Advantage</span>
@@ -329,7 +326,7 @@ export default function Home() {
         <LifeAtGreenValley isHomePage={true} />
 
         {/* ─── ABOUT US SECTION (Condensed) ─── */}
-        <section id="about-us" className="reveal-section" style={{ padding: "4rem 1.5rem", background: "rgba(15,61,36,0.15)", position: "relative" }}>
+        <section id="about-us" style={{ padding: "4rem 1.5rem", background: "rgba(15,61,36,0.15)", position: "relative" }}>
           <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "4rem", alignItems: "center" }}>
               <div>
@@ -338,9 +335,9 @@ export default function Home() {
                   Cultivating <span className="gold-text">Agricultural</span> Excellence
                 </h2>
                 <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
-                  Started with just 12 students, GVCI has grown into the premier coaching hub for PAT and PVT in Sehore. Our mission is to bridge the gap between rural talent and India's top agricultural universities. We believe results come from strong concepts, disciplined testing, and a happy, motivated campus environment.
+                  Started with just 12 students, GVCI has grown into the premier coaching hub for PAT and PVT in Sehore. Our mission is to bridge the gap between rural talent and India&apos;s top agricultural universities. We believe results come from strong concepts, disciplined testing, and a happy, motivated campus environment.
                 </p>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
+                <div className="home-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
                   <div>
                     <div style={{ fontSize: "2rem", fontWeight: 900, color: "var(--gold)" }}>10Yrs</div>
                     <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Excellence</div>
@@ -365,18 +362,18 @@ export default function Home() {
         </section>
 
         {/* ─── ADMISSION SECTION ─── */}
-        <section id="admission" className="reveal-section" style={{ padding: "6rem 1.5rem", background: "radial-gradient(circle at bottom right, rgba(212,160,23,0.05) 0%, transparent 50%)" }}>
+        <section id="admission" style={{ padding: "6rem 1.5rem", background: "radial-gradient(circle at bottom right, rgba(212,160,23,0.05) 0%, transparent 50%)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
               <span className="section-label">Enrollment Open</span>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 900, letterSpacing: "-0.02em" }}>Admission <span className="gold-text">2026-27</span></h2>
             </div>
-            <AdmissionTabs onApplyClick={() => { window.location.href = "/enquiry-form"; }} />
+            <AdmissionTabs wrapTabs onApplyClick={() => { window.location.href = "/enquiry-form"; }} />
           </div>
         </section>
 
         {/* ─── SCHOLARSHIP SECTION ─── */}
-        <section id="scholarship" className="reveal-section" style={{ padding: "4rem 1.5rem", background: "rgba(15,61,36,0.1)" }}>
+        <section id="scholarship" style={{ padding: "4rem 1.5rem", background: "rgba(15,61,36,0.1)" }}>
           <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span className="section-label">Financial Aid</span>
@@ -392,6 +389,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <div style={{ textAlign: "center", marginTop: "2rem" }}>
+              <Link href="/enquiry-form" className="btn-gold">Apply for Scholarship -&gt;</Link>
+            </div>
           </div>
         </section>
 
@@ -402,7 +402,7 @@ export default function Home() {
         <StudentReviewsSection />
 
         {/* ─── CONTACT SECTION ─── */}
-        <div id="contact" className="reveal-section">
+        <div id="contact">
           <ContactForm />
         </div>
 

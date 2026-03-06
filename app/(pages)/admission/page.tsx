@@ -32,7 +32,7 @@ export default function AdmissionPage() {
                 </div>
             </section>
 
-            <AdmissionTabs steps={steps} />
+            <AdmissionTabs steps={steps} wrapTabs />
 
             <Footer />
         </main>

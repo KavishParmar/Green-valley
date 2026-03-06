@@ -1,30 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 
 const BookPreloader = dynamic(() => import("./ui/BookPreloader"), { ssr: false });
 
-export default function PageLoaderWrapper({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+function RouteFrame({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [prevPath, setPrevPath] = useState<string>(pathname);
-
-  useEffect(() => {
-    // Show loader on initial load (pathname empty vs actual pathname)
-    if (pathname && !prevPath) {
-      setIsLoading(true);
-      setPrevPath(pathname);
-      return;
-    }
-
-    // Check if the path has changed (navigate to different page)
-    if (pathname !== prevPath) {
-      setIsLoading(true);
-      setPrevPath(pathname);
-    }
-  }, [pathname, prevPath]);
-
   return (
     <>
       {isLoading && <BookPreloader onComplete={() => setIsLoading(false)} />}
@@ -33,4 +15,9 @@ export default function PageLoaderWrapper({ children }: { children: React.ReactN
       </main>
     </>
   );
+}
+
+export default function PageLoaderWrapper({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname() || "/";
+  return <RouteFrame key={pathname}>{children}</RouteFrame>;
 }

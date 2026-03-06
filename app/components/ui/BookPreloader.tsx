@@ -31,7 +31,7 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
         <div className="book">
           <div className="book-back">
             <Image
-              src="/gallery/475057395_1033857868759469_5485895748089860725_n.jpg"
+              src="/gallery/All images/others/475057395_1033857868759469_5485895748089860725_n.jpg"
               alt="GVCI"
               fill
               style={{ objectFit: 'cover', opacity: 0.8 }}
@@ -81,8 +81,8 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
           <div className="book-cover">
             <div className="page-side page-front cover-design">
               <div className="cover-content">
-                <span className="logo-text">Green</span>
-                <span className="logo-subtext">Valley</span>
+                <span className="logo-title">Green Valley</span>
+                <span className="logo-subtext">Coaching Institute</span>
               </div>
             </div>
             <div className="page-side page-back cover-back-inner"></div>
@@ -158,19 +158,22 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
            border-radius: 4px;
         }
 
-        .logo-text {
+        .logo-title {
           font-weight: 900;
           color: #fff;
-          font-size: 1.25rem;
-          line-height: 1;
+          font-size: 1rem;
+          line-height: 1.2;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
         }
 
         .logo-subtext {
           color: #d4a017;
-          font-size: 0.75rem;
+          font-size: 0.62rem;
           font-weight: 700;
-          letter-spacing: 0.15em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
+          text-align: center;
         }
 
         .book-page, .book-cover {
@@ -278,6 +281,21 @@ export default function BookPreloader({ onComplete }: { onComplete: () => void }
         @keyframes pulse {
           0%, 100% { opacity: 0.4; transform: scale(0.98); }
           50% { opacity: 0.9; transform: scale(1); }
+        }
+        @media (max-width: 480px) {
+          .book {
+            width: 130px;
+            height: 180px;
+          }
+          .cover-content {
+            padding: 0.7rem;
+          }
+          .logo-title {
+            font-size: 0.9rem;
+          }
+          .logo-subtext {
+            font-size: 0.56rem;
+          }
         }
       `}</style>
     </div>

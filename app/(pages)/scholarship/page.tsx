@@ -113,6 +113,9 @@ export default function ScholarshipPage() {
                                 <div style={{ padding: "0.75rem 1rem", background: "rgba(255,255,255,0.04)", borderRadius: "10px", color: "rgba(255,255,255,0.5)", fontSize: "0.8rem" }}>
                                     <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>How to Apply: </span>{s.process}
                                 </div>
+                                <Link href="/enquiry-form" style={{ marginTop: "1rem", background: s.color, color: "#fff", padding: "0.65rem 1rem", borderRadius: "10px", textDecoration: "none", display: "inline-block", fontWeight: 700, fontSize: "0.85rem" }}>
+                                    Apply for Scholarship →
+                                </Link>
                             </div>
                         </div>
                     ))}
