@@ -14,9 +14,39 @@ const reviews = [
         text: "The teachers not only cleared my doubts but also guided me in career decisions and kept my confidence high during low-scoring phases.",
     },
     {
-        name: "Vishal Yadav",
+        name: "Deepak Choudhary",
         rating: 5,
-        text: "The environment here is very competitive yet supportive. They don't just teach the syllabus, they teach you how to attempt the paper strategically.",
+        text: "The library facilities and 24/7 access were crucial for my preparation. I could study peacefully without any distractions.",
+    },
+    {
+        name: "Anjali Verma",
+        rating: 5,
+        text: "Green Valley's study material is the best in the industry. It's concise, covering all previous 24 years of exam questions.",
+    },
+    {
+        name: "Rahul Meena",
+        rating: 5,
+        text: "The Saturday doubt classes helped me clear all my conceptual hurdles. The teachers are incredibly patient.",
+    },
+    {
+        name: "Sandeep Patidar",
+        rating: 5,
+        text: "Coming from a rural background, I was worried about the competition. But the GVCI Guardian System provided me personalized mentorship.",
+    },
+    {
+        name: "Karan Singh",
+        rating: 5,
+        text: "The focus on 'Concept First Teaching' made even the toughest science topics easy to visualize and understand.",
+    },
+    {
+        name: "Megha Solanki",
+        rating: 5,
+        text: "The topper meets over dinner were a great initiative. It motivated me to rank in the top 3 during the weekly tests.",
+    },
+    {
+        name: "Arjun Panwar",
+        rating: 5,
+        text: "The most awarded institute for a reason. Honored to have studied under such experienced faculty recognized statewide.",
     },
 ];
 

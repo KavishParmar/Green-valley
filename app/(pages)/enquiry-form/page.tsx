@@ -12,7 +12,7 @@ export default function EnquiryFormPage() {
 
     const validateField = (name: string, value: string) => {
         const newErrors = { ...errors };
-        
+
         if (name === "mobileNumber") {
             // Only 10 digits allowed
             const isValid = /^\d{10}$/.test(value.toString().replace(/\D/g, ''));
@@ -21,7 +21,7 @@ export default function EnquiryFormPage() {
             const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
             newErrors[name] = !isValid;
         }
-        
+
         setErrors(newErrors);
     };
 
@@ -33,7 +33,7 @@ export default function EnquiryFormPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (Object.values(errors).some(error => error)) {
             alert("❌ Please fix the validation errors");
             return;
@@ -41,35 +41,40 @@ export default function EnquiryFormPage() {
 
         setSubmitting(true);
 
-        const message = `🌟 New Registration - Green Valley Coaching Institute 🌟
----
-👤 First Name: ${formData.firstName}
-👤 Last Name: ${formData.lastName}
-📞 Mobile: ${formData.mobileNumber}
-📧 Email: ${formData.email}
-👥 Gender: ${formData.gender}
-🎓 Applying For: ${formData.applyingFor}
-🎯 Batch: ${formData.batch}
-📚 Stream: ${formData.stream}
-🏆 Last Qualified Exam: ${formData.lastQualifiedExam || "N/A"}
-❓ Questions: ${formData.questions || "N/A"}
-🕐 Best Time to Call: ${formData.callTime || "N/A"}
-👥 Reference: ${formData.reference}
-${formData.reference === "yes" ? `
-📝 Reference Name: ${formData.referenceName || "N/A"}
-📅 Reference Batch: ${formData.referenceBatch || "N/A"}
-📍 Reference Address: ${formData.referenceAddress || "N/A"}
-📌 Other Details: ${formData.otherDetails || "N/A"}` : ""}`;
+        const formDataToSend = new FormData();
+        const now = new Date();
+        formDataToSend.append("Date", now.toLocaleDateString());
+        formDataToSend.append("Time", now.toLocaleTimeString());
+        formDataToSend.append("Name", formData.Name || "");
+        formDataToSend.append("Email", formData.email || "");
+        formDataToSend.append("Contact", formData.mobileNumber || "");
+        formDataToSend.append("Gender", formData.gender || "");
+        formDataToSend.append("Applying for", formData.applyingFor || "");
+        formDataToSend.append("Batch", formData.batch || "");
+        formDataToSend.append("Stream", formData.stream || "");
+        formDataToSend.append("Last qualification", formData.lastQualifiedExam || "");
+        formDataToSend.append("Best time to call", formData.callTime || "");
+        formDataToSend.append("Query", formData.questions || "");
+        formDataToSend.append("Referencee Name", formData.referenceName || "");
+        formDataToSend.append("Referencee batch", formData.referenceBatch || "");
+        formDataToSend.append("Referencee adress", formData.referenceAddress || "");
+        formDataToSend.append("Referencee other details", formData.otherDetails || "");
 
         try {
-            const waText = encodeURIComponent(message);
-            window.open(`https://wa.me/919926205683?text=${waText}`, "_blank");
-            
-            alert("✅ Registration received! Opening WhatsApp...");
-            setShowToast(true);
-            setFormData({});
-            setShowReference(false);
-            setTimeout(() => setShowToast(false), 6000);
+            const response = await fetch("https://script.google.com/macros/s/AKfycbwR6FAe-iDluDY6OkaQcg6I_wz83YnnZJA1M40kLHq1lPR1gHfJr1wTyI2jyWFIR-Ac/exec", {
+                method: "POST",
+                body: formDataToSend,
+            });
+
+            if (response.ok) {
+                alert("✅ Registration received successfully!");
+                setShowToast(true);
+                setFormData({});
+                setShowReference(false);
+                setTimeout(() => setShowToast(false), 6000);
+            } else {
+                throw new Error("Network response was not ok");
+            }
         } catch (error) {
             console.error("Submission error:", error);
             alert("❌ Something went wrong. Please try again.");
@@ -126,13 +131,13 @@ ${formData.reference === "yes" ? `
                         {/* First Name & Last Name */}
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
                             <div>
-                                <label style={labelStyle}>First Name *</label>
-                                <input type="text" name="firstName" value={formData.firstName || ""} onChange={handleInputChange} required placeholder="Enter first name" style={inputStyle("firstName")} />
+                                <label style={labelStyle}>Name *</label>
+                                <input type="text" name="Name" value={formData.Name || ""} onChange={handleInputChange} required placeholder="Enter your name" style={inputStyle("Name")} />
                             </div>
-                            <div>
+                            {/* <div>
                                 <label style={labelStyle}>Last Name *</label>
                                 <input type="text" name="lastName" value={formData.lastName || ""} onChange={handleInputChange} required placeholder="Enter last name" style={inputStyle("lastName")} />
-                            </div>
+                            </div> */}
                         </div>
 
                         {/* Mobile & Email */}
@@ -224,14 +229,14 @@ ${formData.reference === "yes" ? `
                         {/* Reference */}
                         <div>
                             <label style={labelStyle}>Reference *</label>
-                            <select 
-                                name="reference" 
-                                value={formData.reference || ""} 
+                            <select
+                                name="reference"
+                                value={formData.reference || ""}
                                 onChange={(e) => {
                                     handleInputChange(e);
                                     setShowReference(e.target.value === "yes");
-                                }} 
-                                required 
+                                }}
+                                required
                                 style={{ ...inputStyle(), background: "rgba(5,15,9,1)" }}
                             >
                                 <option value="">Select Option</option>
@@ -244,7 +249,7 @@ ${formData.reference === "yes" ? `
                         {showReference && (
                             <div style={{ background: "rgba(212,160,23,0.05)", padding: "2rem", borderRadius: "16px", border: "1px solid rgba(212,160,23,0.2)" }}>
                                 <h3 style={{ color: "var(--gold)", marginBottom: "1.5rem", fontSize: "1.1rem", fontWeight: 700 }}>Reference Details</h3>
-                                
+
                                 <div className="reference-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
                                     <div>
                                         <label style={labelStyle}>Reference Name</label>

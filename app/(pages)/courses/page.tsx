@@ -149,7 +149,7 @@ export default function CoursesPage() {
                                             <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem" }}>Exam Body: {course.examBody}</div>
                                             <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.8rem", marginTop: "0.2rem" }}>{course.target}</div>
                                         </div>
-</div>
+                                    </div>
                                 </div>
 
                                 {/* Collapsible Body */}
@@ -267,7 +267,7 @@ export default function CoursesPage() {
                         { title: "PCMB Special", eligibility: "All Students", duration: "4 Months", batch: "15th of March 2026", color: "#e34a6f" },
                         { title: "Crash Course", eligibility: "After 12th Board", duration: "3-4 Months", batch: "15th of March 2026", color: "#0ea5e9" }
                     ].map(b => (
-                        <div key={b.title} style={{ background: "var(--dark)", border: `1px solid ${b.color}40`, borderRadius: "16px", padding: "2rem", transition: "all 0.3s ease", cursor: "pointer", boxShadow: `0 4px 20px ${b.color}10` }} onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = `0 10px 30px ${b.color}20`; }} onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = `0 4px 20px ${b.color}10`; }}>
+                        <div key={b.title} style={{ background: "var(--dark)", border: `1px solid ${b.color}40`, borderRadius: "16px", padding: "2rem", transition: "all 0.3s ease", cursor: "pointer", boxShadow: `0 4px 20px ${b.color}10` }} onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.transform = "translateY(-5px)"; (e.currentTarget as HTMLElement).style.boxShadow = `0 10px 30px ${b.color}20`; }} onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${b.color}10`; }}>
                             <h3 style={{ fontSize: "1.3rem", fontWeight: 800, color: b.color, marginBottom: "1.25rem" }}>{b.title}</h3>
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}><strong style={{ color: "#fff" }}>Eligibility:</strong> <span>{b.eligibility}</span></div>

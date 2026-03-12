@@ -1,16 +1,13 @@
-"use client";
-import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import ContactForm from "./components/ContactForm";
 import Link from "next/link";
 import StudentReviewsSection from "./components/ui/StudentReviewsSection";
 import AchievementsSection from "./components/ui/AchievementsSection";
 import LifeAtGreenValley from "./components/ui/LifeAtGreenValley";
-
-const AdmissionTabs = dynamic(() => import("./components/ui/AdmissionTabs"), { ssr: false });
+import AnnouncementModal from "./components/ui/AnnouncementModal";
+import AdmissionTabs from "./components/ui/AdmissionTabs";
 
 const courses = [
   {
@@ -97,66 +94,14 @@ const homeFeatures = [
 ];
 
 export default function Home() {
-  const [showAnnouncement, setShowAnnouncement] = useState(true);
-
-  const closeAnnouncement = () => {
-    setShowAnnouncement(false);
-  };
-
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    if (showAnnouncement) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = prev;
-    }
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [showAnnouncement]);
-
   return (
     <>
       <main>
         <Navbar />
-
-        {showAnnouncement && (
-          <div style={{ position: "fixed", inset: 0, zIndex: 9998, background: "rgba(0,0,0,0.58)", pointerEvents: "auto" }}>
-            <div
-              style={{
-                width: "min(92vw, 720px)",
-                maxHeight: "90vh",
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <div style={{ position: "relative", width: "100%", maxHeight: "90vh", borderRadius: "14px", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,0.55)" }}>
-                <Image
-                  src="/gallery/posters/Announcement.png"
-                  alt="Announcement"
-                  width={1280}
-                  height={1600}
-                  priority
-                  sizes="(max-width: 768px) 92vw, 720px"
-                  style={{ width: "100%", height: "auto", maxHeight: "90vh", objectFit: "contain", display: "block" }}
-                />
-                <button
-                  aria-label="Close announcement"
-                  onClick={closeAnnouncement}
-                  style={{ position: "absolute", top: "0.5rem", right: "0.5rem", width: "2rem", height: "2rem", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.7)", background: "rgba(5,15,9,0.75)", color: "#fff", fontSize: "1.2rem", fontWeight: 700, lineHeight: 1, cursor: "pointer" }}
-                >
-                  X
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        <AnnouncementModal />
 
         {/* ─── SIMPLE PREMIUM HERO ─── */}
-        <section
-          id="hero"
+        <section id="hero"
           style={{
             minHeight: "100vh",
             background: "radial-gradient(ellipse at center, rgba(15,61,36,0.4) 0%, var(--dark) 70%)",
@@ -181,19 +126,20 @@ export default function Home() {
           />
 
           <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative", zIndex: 10 }}>
-            <span className="animate-in section-label" style={{ marginBottom: "1.5rem" }}>🌿 Established 2011 · Excellence in Agriculture</span>
+            {/* <span className="animate-in section-label" style={{ marginBottom: "1.5rem" }}>🌿 Established 2011 · Excellence in Agriculture</span> */}
             <h1 className="animate-in" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", fontWeight: 950, lineHeight: 0.95, letterSpacing: "-0.04em", marginBottom: "2rem" }}>
               <span style={{ color: "#fff" }}>Green</span> <span className="gold-text">Valley</span><br />
               <span className="green-text" style={{ fontSize: "0.8em" }}>Coaching Institute</span>
             </h1>
             <p className="animate-in" style={{ fontSize: "1.25rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "3.5rem", maxWidth: "680px", margin: "0 auto 3.5rem" }}>
-              The premier destination for PAT, CUET(ICAR), BHU, and PVT preparation in Sehore. Expert faculty, proven methodology, and a supportive environment for future agricultural leaders.
+              The premier destination for PAT, CUET(ICAR), BHU, and PVT preparation in Sehore.
+              {/* Expert faculty, proven methodology, and a supportive environment for future agricultural leaders. */}
             </p>
             <div className="animate-in" style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap", marginBottom: "2.5rem" }}>
               <a href="/admission" className="btn-gold" style={{ textDecoration: "none", padding: "1.1rem 2.8rem", fontSize: "1.1rem" }}>Explore Admission →</a>
             </div>
 
-            <div className="animate-in" style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+            {/* <div className="animate-in" style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
               {[
                 "State‑Level Awarded Institute (Hon. CM Shivraj Singh Chouhan)",
                 "Annual Growth Trips & Cultural Events",
@@ -212,7 +158,7 @@ export default function Home() {
                   {text}
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -377,7 +323,7 @@ export default function Home() {
               <span className="section-label">Enrollment Open</span>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 900, letterSpacing: "-0.02em" }}>Admission <span className="gold-text">2026-27</span></h2>
             </div>
-            <AdmissionTabs wrapTabs onApplyClick={() => { window.location.href = "/enquiry-form"; }} />
+            <AdmissionTabs wrapTabs />
           </div>
         </section>
 
@@ -418,7 +364,8 @@ export default function Home() {
         <Footer />
       </main>
 
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         :root {
           --dark: #050f09;
           --gold: #d4a017;
@@ -462,7 +409,7 @@ export default function Home() {
             background: rgba(255,255,255,0.04) !important;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-      `}</style>
+      ` }} />
     </>
   );
 }
